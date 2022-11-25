@@ -91,8 +91,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="pokemonImageLeft" destination="y3k-xR-6U3" id="4zB-9c-TSE"/>
-                                            <outlet property="pokemonImageRight" destination="s0P-MV-7I6" id="3xa-DB-5i1"/>
+                                            <outlet property="pokemonImageLeft" destination="GUh-I3-NAW" id="efp-AH-mOS"/>
+                                            <outlet property="pokemonImageRight" destination="VHb-YH-4FQ" id="RWM-e5-5l8"/>
                                             <outlet property="pokemonNameLeft" destination="OEb-b3-l4G" id="weO-BG-0K7"/>
                                             <outlet property="pokemonNameRight" destination="A3O-4J-PgB" id="ytY-J5-KHg"/>
                                         </connections>

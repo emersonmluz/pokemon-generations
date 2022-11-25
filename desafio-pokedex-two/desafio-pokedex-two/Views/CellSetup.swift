@@ -11,12 +11,30 @@ class CellSetup: UITableViewCell {
     
     @IBOutlet weak var pokemonNameLeft: UILabel!
     @IBOutlet weak var pokemonNameRight: UILabel!
-    @IBOutlet weak var pokemonImageLeft: UIView!
-    @IBOutlet weak var pokemonImageRight: UIView!
+    @IBOutlet weak var pokemonImageLeft: UIImageView!
+    @IBOutlet weak var pokemonImageRight: UIImageView!
     
     func loadCell (pokemonOne: Pokemon, pokemonTwo: Pokemon) {
         pokemonNameLeft.text = pokemonOne.name
         pokemonNameRight.text = pokemonTwo.name
+        pokemonImageLeft.loadFrom(URLAddress: pokemonOne.imageURL)
+        pokemonImageRight.loadFrom(URLAddress: pokemonTwo.imageURL)
     }
     
+}
+
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            if let imageData = try? Data(contentsOf: url) {
+                if let loadedImage = UIImage(data: imageData) {
+                        self?.image = loadedImage
+                }
+            }
+        }
+    }
 }
