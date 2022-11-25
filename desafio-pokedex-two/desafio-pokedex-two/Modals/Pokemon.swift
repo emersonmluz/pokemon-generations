@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Pokemon {
+struct Pokemon: Codable {
     var name: String
     var habilityURL: String
     var imageURL: String {
@@ -31,8 +31,8 @@ struct Pokemon {
         return str + id.reversed() + ".png"
     }
     
-    init(name: String, habilityURL: String) {
-        self.name = name
-        self.habilityURL = habilityURL
+    enum CodingKeys: String, CodingKey {
+        case name
+        case habilityURL = "url"
     }
 }

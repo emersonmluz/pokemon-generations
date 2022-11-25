@@ -9,7 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var pokedex: PokemonList?
     var pokemon: [Pokemon] = []
 
     override func viewDidLoad() {
@@ -35,17 +34,12 @@ class ViewController: UIViewController {
             
             do {
                 let decoder = JSONDecoder()
-                let pokemons = try decoder.decode(PokemonList.self, from: data!)
+                let pokemonList = try decoder.decode(PokemonList.self, from: data!)
                 
                 DispatchQueue.main.async {
-                    for index in 0...pokemons.list.count - 1 {
-                        self.pokemon.append(Pokemon(name: pokemons.list[index]["name"]!, habilityURL: pokemons.list[index]["url"]!))
-                        print("Name: \(self.pokemon[index].name) \nHabilidade URL: \(self.pokemon[index].habilityURL) \nImagemURL: \(self.pokemon[index].imageURL)")
-                    }
-                    
-                    self.pokedex = pokemons
-                    
+                    self.pokemon = pokemonList.result
                 }
+                
             } catch let error {
                 print(error)
             }
