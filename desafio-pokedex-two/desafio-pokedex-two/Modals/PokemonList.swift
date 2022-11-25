@@ -8,9 +8,9 @@
 import Foundation
 
 struct PokemonList: Codable {
-    var pokemon: [[String: String]]
+    var list: [[String: String]]
     
     enum CodingKeys: String, CodingKey {
-        case pokemon = "results"
+        case list = "results"
     }
 }
