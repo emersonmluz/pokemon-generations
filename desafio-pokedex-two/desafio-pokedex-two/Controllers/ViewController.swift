@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var pokemon: [Pokemon] = []
 
     override func viewDidLoad() {
+        tableView.dataSource = self
         
         loadPokemonList()
         super.viewDidLoad()
@@ -38,6 +41,7 @@ class ViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.pokemon = pokemonList.result
+                    self.tableView.reloadData()
                 }
                 
             } catch let error {
@@ -48,3 +52,17 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pokemon.count / 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CellSetup
+        
+        cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
+        return cell
+    }
+    
+    
+}
