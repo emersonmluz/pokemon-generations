@@ -29,12 +29,17 @@ extension UIImageView {
             return
         }
         
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                        self?.image = loadedImage
+        DispatchQueue.global().async {
+            let imageData = try? Data(contentsOf: url)
+            
+            DispatchQueue.main.async { [weak self] in
+                if let imageData = imageData {
+                    if let loadedImage = UIImage(data: imageData) {
+                            self?.image = loadedImage
+                    }
                 }
             }
         }
+
     }
 }
