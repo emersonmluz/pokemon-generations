@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     
     var pokedex: PokemonList?
     var pokemon: [Pokemon] = []
-    var imageName: String = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
     override func viewDidLoad() {
         
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     for index in 0...pokemons.list.count - 1 {
-                        self.pokemon.append(Pokemon(name: pokemons.list[index]["name"]!, habilityURL: pokemons.list[index]["url"]!, imageURL: self.imageName + pokemons.list[index]["url"]!))
+                        self.pokemon.append(Pokemon(name: pokemons.list[index]["name"]!, habilityURL: pokemons.list[index]["url"]!))
                         print("Name: \(self.pokemon[index].name) \nHabilidade URL: \(self.pokemon[index].habilityURL) \nImagemURL: \(self.pokemon[index].imageURL)")
                     }
                     

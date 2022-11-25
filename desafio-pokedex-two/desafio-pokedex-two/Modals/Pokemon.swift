@@ -10,11 +10,29 @@ import Foundation
 struct Pokemon {
     var name: String
     var habilityURL: String
-    var imageURL: String
+    var imageURL: String {
+        let str = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+        var id: String = ""
+        var barNumber: Int = 0
     
-    init(name: String, habilityURL: String, imageURL: String) {
+        for letter in habilityURL.reversed() {
+            if letter == "/" {
+                barNumber += 1
+            }
+            if barNumber == 1 && letter != "/" {
+                id += String(letter)
+                
+            }
+            if barNumber == 2 {
+                break
+            }
+        }
+        
+        return str + id.reversed() + ".png"
+    }
+    
+    init(name: String, habilityURL: String) {
         self.name = name
         self.habilityURL = habilityURL
-        self.imageURL = imageURL
     }
 }
