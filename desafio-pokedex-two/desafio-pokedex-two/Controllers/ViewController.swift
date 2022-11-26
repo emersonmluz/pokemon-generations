@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     func loadPokemonList () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100")
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=151")
         
         guard url != nil else {return}
         
