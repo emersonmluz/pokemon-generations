@@ -16,6 +16,7 @@
 		EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F748293121D60036DE1C /* PokemonList.swift */; };
 		EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F74A29312A9C0036DE1C /* Pokemon.swift */; };
 		EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F74E293148DE0036DE1C /* CellSetup.swift */; };
+		EEEFE0C52933B4A9007730BB /* LoadScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0C42933B4A9007730BB /* LoadScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EEA1F748293121D60036DE1C /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		EEA1F74A29312A9C0036DE1C /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		EEA1F74E293148DE0036DE1C /* CellSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSetup.swift; sourceTree = "<group>"; };
+		EEEFE0C42933B4A9007730BB /* LoadScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				EEA1F748293121D60036DE1C /* PokemonList.swift */,
 				EEA1F74A29312A9C0036DE1C /* Pokemon.swift */,
+				EEEFE0C42933B4A9007730BB /* LoadScreen.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */,
+				EEEFE0C52933B4A9007730BB /* LoadScreen.swift in Sources */,
 				EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */,
 				EEA1F736293121760036DE1C /* ViewController.swift in Sources */,
 				EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */,

@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var nothingFoundLabel: UILabel!
     
     var pokemon: [Pokemon] = []
     var arraySearch: [Pokemon] = []
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         tableView.dataSource = self
         
+        LoadScreen.start(tableView: tableView)
         loadPokemonList()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,8 +27,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
+        LoadScreen.start(tableView: tableView)
         search()
         tableView.reloadData()
+        LoadScreen.stop(tableView: tableView)
     }
     
     func search () {
@@ -61,6 +65,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.pokemon = pokemonList.result
                     self.tableView.reloadData()
+                    LoadScreen.stop(tableView: self.tableView)
                 }
                 
             } catch let error {
@@ -78,10 +83,15 @@ extension ViewController: UITableViewDataSource {
         
         if arraySearch.count > 0 {
             numberOfRows = Double(arraySearch.count) / 2
+            nothingFoundLabel.alpha = 0
+        } else if searchTextField.text != "" {
+            nothingFoundLabel.alpha = 1
         } else {
             numberOfRows = Double(pokemon.count) / 2
+            nothingFoundLabel.alpha = 0
         }
         
+        searchTextField.text = ""
         numberOfRows = ceil(numberOfRows)
         return Int(numberOfRows)
     }
