@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F731293121760036DE1C /* AppDelegate.swift */; };
 		EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F733293121760036DE1C /* SceneDelegate.swift */; };
-		EEA1F736293121760036DE1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F735293121760036DE1C /* ViewController.swift */; };
+		EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F735293121760036DE1C /* HomeViewController.swift */; };
 		EEA1F739293121760036DE1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA1F737293121760036DE1C /* Main.storyboard */; };
 		EEA1F73B293121770036DE1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA1F73A293121770036DE1C /* Assets.xcassets */; };
 		EEA1F73E293121770036DE1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA1F73C293121770036DE1C /* LaunchScreen.storyboard */; };
@@ -23,7 +23,7 @@
 		EEA1F72E293121760036DE1C /* desafio-pokedex-two.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "desafio-pokedex-two.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA1F731293121760036DE1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA1F733293121760036DE1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EEA1F735293121760036DE1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EEA1F735293121760036DE1C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EEA1F738293121760036DE1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEA1F73A293121770036DE1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEA1F73D293121770036DE1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		EEA1F745293121900036DE1C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EEA1F735293121760036DE1C /* ViewController.swift */,
+				EEA1F735293121760036DE1C /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 				EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */,
 				EEEFE0C52933B4A9007730BB /* LoadScreen.swift in Sources */,
 				EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */,
-				EEA1F736293121760036DE1C /* ViewController.swift in Sources */,
+				EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */,
 				EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */,
 				EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */,
 				EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */,

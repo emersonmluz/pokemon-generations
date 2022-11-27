@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var nothingFoundLabel: UILabel!
+    @IBOutlet weak var nothingResultLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     var pokemon: [Pokemon] = []
@@ -78,19 +78,19 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         var numberOfRows: Double = 0
         
         if arraySearch.count > 0 {
             numberOfRows = Double(arraySearch.count) / 2
-            nothingFoundLabel.alpha = 0
+            nothingResultLabel.alpha = 0
         } else if searchTextField.text != "" {
-            nothingFoundLabel.alpha = 1
+            nothingResultLabel.alpha = 1
         } else {
             numberOfRows = Double(pokemon.count) / 2
-            nothingFoundLabel.alpha = 0
+            nothingResultLabel.alpha = 0
         }
         
         searchTextField.text = ""

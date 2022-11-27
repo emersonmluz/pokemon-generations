@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="desafio_pokedex_two" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="desafio_pokedex_two" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
                     </view>
                     <connections>
                         <outlet property="loadingActivityIndicator" destination="7Pn-2g-GIm" id="d1M-3a-1TX"/>
-                        <outlet property="nothingFoundLabel" destination="w5P-dH-mmR" id="Zt8-uu-ZyC"/>
+                        <outlet property="nothingResultLabel" destination="w5P-dH-mmR" id="Zt8-uu-ZyC"/>
                         <outlet property="searchTextField" destination="rgV-TG-SYb" id="hcR-5P-Kct"/>
                         <outlet property="tableView" destination="mQA-M7-Ful" id="Qyg-BM-ELa"/>
                     </connections>
