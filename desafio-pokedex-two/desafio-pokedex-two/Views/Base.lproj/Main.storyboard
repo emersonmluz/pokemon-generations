@@ -58,57 +58,57 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Owi-JP-OV2">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Owi-JP-OV2">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3k-xR-6U3" userLabel="PokemonView1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="157.5" height="165"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="165"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUh-I3-NAW">
-                                                                    <rect key="frame" x="29" y="10" width="100" height="100"/>
+                                                                    <rect key="frame" x="30" y="20" width="100" height="100"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="GUh-I3-NAW" secondAttribute="height" multiplier="1:1" id="JB2-ne-3Xy"/>
                                                                         <constraint firstAttribute="width" constant="100" id="pIR-7D-VNe"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEb-b3-l4G">
-                                                                    <rect key="frame" x="52" y="115" width="53.5" height="22.5"/>
+                                                                    <rect key="frame" x="53.5" y="125" width="53.5" height="22.5"/>
                                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="OEb-b3-l4G" firstAttribute="centerX" secondItem="y3k-xR-6U3" secondAttribute="centerX" id="BZk-Ec-4aq"/>
-                                                                <constraint firstItem="GUh-I3-NAW" firstAttribute="top" secondItem="y3k-xR-6U3" secondAttribute="top" constant="10" id="MDY-Mw-NLu"/>
+                                                                <constraint firstItem="GUh-I3-NAW" firstAttribute="top" secondItem="y3k-xR-6U3" secondAttribute="top" constant="20" id="MDY-Mw-NLu"/>
                                                                 <constraint firstItem="OEb-b3-l4G" firstAttribute="top" secondItem="GUh-I3-NAW" secondAttribute="bottom" constant="5" id="nXz-cK-Hrl"/>
                                                                 <constraint firstItem="GUh-I3-NAW" firstAttribute="centerX" secondItem="y3k-xR-6U3" secondAttribute="centerX" id="sOh-Qv-meX"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0P-MV-7I6" userLabel="PokemonView2">
-                                                            <rect key="frame" x="162.5" y="0.0" width="157.5" height="165"/>
+                                                            <rect key="frame" x="160" y="0.0" width="160" height="165"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-YH-4FQ">
-                                                                    <rect key="frame" x="29" y="10" width="100" height="100"/>
+                                                                    <rect key="frame" x="30" y="20" width="100" height="100"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="2i1-hn-TNV"/>
                                                                         <constraint firstAttribute="width" secondItem="VHb-YH-4FQ" secondAttribute="height" multiplier="1:1" id="X4L-fe-Y35"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3O-4J-PgB">
-                                                                    <rect key="frame" x="52" y="115" width="53.5" height="22.5"/>
+                                                                    <rect key="frame" x="53.5" y="125" width="53.5" height="22.5"/>
                                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="VHb-YH-4FQ" firstAttribute="centerX" secondItem="s0P-MV-7I6" secondAttribute="centerX" id="2Hy-rP-sB5"/>
                                                                 <constraint firstItem="A3O-4J-PgB" firstAttribute="centerX" secondItem="s0P-MV-7I6" secondAttribute="centerX" id="NMh-aa-0r4"/>
                                                                 <constraint firstItem="A3O-4J-PgB" firstAttribute="top" secondItem="VHb-YH-4FQ" secondAttribute="bottom" constant="5" id="frG-q7-8ra"/>
-                                                                <constraint firstItem="VHb-YH-4FQ" firstAttribute="top" secondItem="s0P-MV-7I6" secondAttribute="top" constant="10" id="plB-fp-9vt"/>
+                                                                <constraint firstItem="VHb-YH-4FQ" firstAttribute="top" secondItem="s0P-MV-7I6" secondAttribute="top" constant="20" id="plB-fp-9vt"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>

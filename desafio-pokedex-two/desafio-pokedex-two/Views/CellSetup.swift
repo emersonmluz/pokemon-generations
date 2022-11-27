@@ -14,7 +14,11 @@ class CellSetup: UITableViewCell {
     @IBOutlet weak var pokemonImageLeft: UIImageView!
     @IBOutlet weak var pokemonImageRight: UIImageView!
     
+    
     func loadCell (pokemonOne: Pokemon, pokemonTwo: Pokemon) {
+        pokemonImageLeft.layer.cornerRadius = 8
+        pokemonImageRight.layer.cornerRadius = 8
+        
         pokemonNameLeft.text = pokemonOne.name
         pokemonImageLeft.loadFrom(URLAddress: pokemonOne.imageURL)
         
