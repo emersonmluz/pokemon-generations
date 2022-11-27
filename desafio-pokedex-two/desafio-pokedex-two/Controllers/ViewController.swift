@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     var pokemon: [Pokemon] = []
+    var arraySearch: [Pokemon] = []
 
     override func viewDidLoad() {
         tableView.dataSource = self
@@ -20,7 +22,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    @IBAction func searchButtonClick(_ sender: UIButton) {
+        search()
+        tableView.reloadData()
+    }
+    
+    func search () {
+        let searchName: String = searchTextField.text ?? ""
+        arraySearch = []
+        
+        for pokemon in pokemon {
+            if pokemon.name.lowercased().contains(searchName.lowercased()) {
+                arraySearch.append(pokemon)
+            }
+        }
+    }
+    
     func loadPokemonList () {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=151")
         
@@ -54,13 +73,28 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return pokemon.count / 2
+        
+        var numberOfRows: Double = 0
+        
+        if arraySearch.count > 0 {
+            numberOfRows = Double(arraySearch.count) / 2
+        } else {
+            numberOfRows = Double(pokemon.count) / 2
+        }
+        
+        numberOfRows = ceil(numberOfRows)
+        return Int(numberOfRows)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CellSetup
         
-        cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
+        if arraySearch.count > 0 {
+            cell.loadCell(pokemonOne: arraySearch[indexPath.row], pokemonTwo: arraySearch[arraySearch.count / 2 + indexPath.row])
+        } else {
+            cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
+        }
+        
         return cell
     }
     

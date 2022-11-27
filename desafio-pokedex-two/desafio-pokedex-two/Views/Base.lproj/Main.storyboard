@@ -28,10 +28,12 @@
                                         <rect key="frame" x="260" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Cdo-kD-Es2" secondAttribute="height" multiplier="1:1" id="Cig-Yg-Hld"/>
-                                            <constraint firstAttribute="width" constant="50" id="rNK-yI-fZj"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                        <connections>
+                                            <action selector="searchButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eai-sV-Hqh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -40,6 +42,7 @@
                                     <constraint firstItem="rgV-TG-SYb" firstAttribute="centerY" secondItem="R3t-LJ-GF5" secondAttribute="centerY" id="SNE-Xq-IFa"/>
                                     <constraint firstItem="rgV-TG-SYb" firstAttribute="leading" secondItem="R3t-LJ-GF5" secondAttribute="leading" constant="60" id="ZI3-Rk-95A"/>
                                     <constraint firstAttribute="height" constant="50" id="b8C-Va-7uO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cdo-kD-Es2" secondAttribute="trailing" constant="10" id="eRh-bK-hq8"/>
                                     <constraint firstItem="Cdo-kD-Es2" firstAttribute="leading" secondItem="rgV-TG-SYb" secondAttribute="trailing" id="oRu-g2-kR3"/>
                                     <constraint firstItem="Cdo-kD-Es2" firstAttribute="top" secondItem="R3t-LJ-GF5" secondAttribute="top" id="tCw-1h-r7O"/>
                                 </constraints>
@@ -149,6 +152,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchTextField" destination="rgV-TG-SYb" id="hcR-5P-Kct"/>
                         <outlet property="tableView" destination="mQA-M7-Ful" id="Qyg-BM-ELa"/>
                     </connections>
                 </viewController>

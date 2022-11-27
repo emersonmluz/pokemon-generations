@@ -16,9 +16,15 @@ class CellSetup: UITableViewCell {
     
     func loadCell (pokemonOne: Pokemon, pokemonTwo: Pokemon) {
         pokemonNameLeft.text = pokemonOne.name
-        pokemonNameRight.text = pokemonTwo.name
         pokemonImageLeft.loadFrom(URLAddress: pokemonOne.imageURL)
-        pokemonImageRight.loadFrom(URLAddress: pokemonTwo.imageURL)
+        
+        if pokemonTwo.name != pokemonOne.name {
+            pokemonNameRight.text = pokemonTwo.name
+            pokemonImageRight.loadFrom(URLAddress: pokemonTwo.imageURL)
+        } else {
+            pokemonNameRight.text = ""
+            pokemonImageRight.image = nil
+        }
     }
     
 }
