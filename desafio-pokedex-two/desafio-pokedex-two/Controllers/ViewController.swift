@@ -12,14 +12,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var nothingFoundLabel: UILabel!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     var pokemon: [Pokemon] = []
     var arraySearch: [Pokemon] = []
+    var generationI: Int = 151
 
     override func viewDidLoad() {
         tableView.dataSource = self
         
-        LoadScreen.start(tableView: tableView)
+        LoadScreen.start(tableView: tableView, activityIndicator: loadingActivityIndicator)
         loadPokemonList()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,10 +29,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
-        LoadScreen.start(tableView: tableView)
+        LoadScreen.start(tableView: tableView, activityIndicator: loadingActivityIndicator)
         search()
         tableView.reloadData()
-        LoadScreen.stop(tableView: tableView)
+        LoadScreen.stop(tableView: tableView, activityIndicator: loadingActivityIndicator)
     }
     
     func search () {
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
     }
     
     func loadPokemonList () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=151")
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=\(generationI)")
         
         guard url != nil else {return}
         
@@ -65,7 +67,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.pokemon = pokemonList.result
                     self.tableView.reloadData()
-                    LoadScreen.stop(tableView: self.tableView)
+                    LoadScreen.stop(tableView: self.tableView, activityIndicator: self.loadingActivityIndicator)
                 }
                 
             } catch let error {
