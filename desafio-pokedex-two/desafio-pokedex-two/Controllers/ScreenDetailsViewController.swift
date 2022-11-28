@@ -13,12 +13,14 @@ class ScreenDetailsViewController: UIViewController {
     var abilities: [Abilities]?
     var type: [Types]?
     var stats: [Stats]?
+    var encounters: [LocationArea]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadPokemonAbilities()
         loadType()
         loadStats()
+        loadLocationArea()
         // Do any additional setup after loading the view.
     }
     
@@ -102,8 +104,35 @@ class ScreenDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.stats = statFile.stats
-                    print(self.stats![0].baseStat)
-                    print(self.stats![0].stat["name"]!)
+                }
+                
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
+    func loadLocationArea () {
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/encounters")
+        
+        guard url != nil else {return}
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard data != nil, error == nil else {return}
+            
+            do {
+                let decoder = JSONDecoder()
+                let area = try decoder.decode([LocationArea].self, from: data!)
+
+                DispatchQueue.main.async {
+                    self.encounters = area
                 }
                 
             } catch let error {

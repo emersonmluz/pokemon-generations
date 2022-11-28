@@ -24,6 +24,7 @@
 		EEEFE0E1293532DB007730BB /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E0293532DB007730BB /* Types.swift */; };
 		EEEFE0E32935365F007730BB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E22935365F007730BB /* Stats.swift */; };
 		EEEFE0E529353925007730BB /* StatsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E429353925007730BB /* StatsList.swift */; };
+		EEEFE0F329354C31007730BB /* LocationArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0F229354C31007730BB /* LocationArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		EEEFE0E0293532DB007730BB /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		EEEFE0E22935365F007730BB /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		EEEFE0E429353925007730BB /* StatsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsList.swift; sourceTree = "<group>"; };
+		EEEFE0F229354C31007730BB /* LocationArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				EEEFE0E0293532DB007730BB /* Types.swift */,
 				EEEFE0E22935365F007730BB /* Stats.swift */,
 				EEEFE0E429353925007730BB /* StatsList.swift */,
+				EEEFE0F229354C31007730BB /* LocationArea.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */,
 				EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */,
 				EEEFE0E1293532DB007730BB /* Types.swift in Sources */,
+				EEEFE0F329354C31007730BB /* LocationArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
