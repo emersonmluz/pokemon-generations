@@ -16,13 +16,13 @@ class HomeViewController: UIViewController {
     
     
     var pokemon: [Pokemon] = []
-    var arraySearch: [Pokemon] = []
+    var arrayOfSearch: [Pokemon] = []
     var generationI: Int = 151
 
     override func viewDidLoad() {
         tableView.dataSource = self
         
-        LoadScreen.start(tableView: tableView, activityIndicator: loadingActivityIndicator)
+        startLoadingScreen()
         loadPokemonList()
         
         
@@ -33,32 +33,43 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
-        LoadScreen.start(tableView: tableView, activityIndicator: loadingActivityIndicator)
+        startLoadingScreen()
         search()
         tableView.reloadData()
-        LoadScreen.stop(tableView: tableView, activityIndicator: loadingActivityIndicator)
+        stopLoadingScreen()
     }
     
     func search () {
         let searchName: String = searchTextField.text ?? ""
-        arraySearch = []
+        arrayOfSearch = []
         
         for pokemon in pokemon {
             if pokemon.name.lowercased().contains(searchName.lowercased()) {
-                arraySearch.append(pokemon)
+                arrayOfSearch.append(pokemon)
             }
         }
     }
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            let detailsScreen = storyboard!.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
+            let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
             
             
             navigationController?.pushViewController(detailsScreen, animated: true)
         }
     }
 
+    func startLoadingScreen () {
+        loadingActivityIndicator.alpha = 1
+        tableView.alpha = 0.5
+        tableView.isUserInteractionEnabled = false
+    }
+    
+    func stopLoadingScreen () {
+        loadingActivityIndicator.alpha = 0
+        tableView.alpha = 1
+        tableView.isUserInteractionEnabled = true
+    }
     
     func loadPokemonList () {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=\(generationI)")
@@ -81,7 +92,7 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.pokemon = pokemonList.result
                     self.tableView.reloadData()
-                    LoadScreen.stop(tableView: self.tableView, activityIndicator: self.loadingActivityIndicator)
+                    self.stopLoadingScreen()
                 }
                 
             } catch let error {
@@ -97,8 +108,8 @@ extension HomeViewController: UITableViewDataSource {
         
         var numberOfRows: Double = 0
         
-        if arraySearch.count > 0 {
-            numberOfRows = Double(arraySearch.count) / 2
+        if arrayOfSearch.count > 0 {
+            numberOfRows = Double(arrayOfSearch.count) / 2
             nothingResultLabel.alpha = 0
         } else if searchTextField.text != "" {
             nothingResultLabel.alpha = 1
@@ -109,18 +120,20 @@ extension HomeViewController: UITableViewDataSource {
         
         searchTextField.text = ""
         numberOfRows = ceil(numberOfRows)
+        
         return Int(numberOfRows)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CellSetup
         
-        if arraySearch.count > 0 {
-            cell.loadCell(pokemonOne: arraySearch[indexPath.row], pokemonTwo: arraySearch[arraySearch.count / 2 + indexPath.row])
+        if arrayOfSearch.count > 0 {
+            cell.loadCell(pokemonOne: arrayOfSearch[indexPath.row], pokemonTwo: arrayOfSearch[arrayOfSearch.count / 2 + indexPath.row])
         } else {
             cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
         }
         
+        let home = HomeViewController()
         let tapImageLeft = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         cell.pokemonImageLeft.addGestureRecognizer(tapImageLeft)
         cell.pokemonImageLeft.isUserInteractionEnabled = true
