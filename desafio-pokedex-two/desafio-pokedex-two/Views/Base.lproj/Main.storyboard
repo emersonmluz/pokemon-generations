@@ -212,14 +212,82 @@
                     <view key="view" contentMode="scaleToFill" id="OBc-W0-icU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJd-hQ-B7U" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edf-Jq-aih" userLabel="StatsView">
+                                        <rect key="frame" x="20" y="170" width="280" height="398"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nps-Hi-ciu">
+                                                <rect key="frame" x="10" y="75" width="260" height="34"/>
+                                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="30"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="5VS-Yx-aoT">
+                                                <rect key="frame" x="70" y="119" width="140" height="4"/>
+                                                <color key="progressTintColor" systemColor="systemCyanColor"/>
+                                            </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oy-34-Izp">
+                                                <rect key="frame" x="100" y="133" width="80" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="9oy-34-Izp" firstAttribute="centerX" secondItem="Edf-Jq-aih" secondAttribute="centerX" id="1oO-Bl-8Zr"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nps-Hi-ciu" secondAttribute="trailing" constant="10" id="8Ih-tN-shQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="9oy-34-Izp" secondAttribute="trailing" constant="100" id="Avc-0o-iuk"/>
+                                            <constraint firstItem="Nps-Hi-ciu" firstAttribute="centerX" secondItem="Edf-Jq-aih" secondAttribute="centerX" id="CSs-cd-2uK"/>
+                                            <constraint firstItem="5VS-Yx-aoT" firstAttribute="leading" secondItem="Edf-Jq-aih" secondAttribute="leading" constant="70" id="Dl4-5X-1jm"/>
+                                            <constraint firstItem="9oy-34-Izp" firstAttribute="top" secondItem="5VS-Yx-aoT" secondAttribute="bottom" constant="10" id="MxN-z8-LHS"/>
+                                            <constraint firstItem="5VS-Yx-aoT" firstAttribute="top" secondItem="Nps-Hi-ciu" secondAttribute="bottom" constant="10" id="WAK-ei-ENu"/>
+                                            <constraint firstAttribute="trailing" secondItem="5VS-Yx-aoT" secondAttribute="trailing" constant="70" id="bYB-Y3-b3P"/>
+                                            <constraint firstItem="Nps-Hi-ciu" firstAttribute="leading" secondItem="Edf-Jq-aih" secondAttribute="leading" constant="10" id="dxx-bv-hQH"/>
+                                            <constraint firstItem="Nps-Hi-ciu" firstAttribute="top" secondItem="Edf-Jq-aih" secondAttribute="top" constant="75" id="wlz-rI-mhS"/>
+                                            <constraint firstItem="9oy-34-Izp" firstAttribute="leading" secondItem="Edf-Jq-aih" secondAttribute="leading" constant="100" id="yx0-MC-ssJ"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzD-fH-EaP" userLabel="PokemonImageView">
+                                        <rect key="frame" x="50" y="50" width="220" height="220"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="xzD-fH-EaP" secondAttribute="height" multiplier="1:1" id="NQL-nG-eEX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="xzD-fH-EaP" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="50" id="6Zi-Zu-Lb9"/>
+                                    <constraint firstItem="xzD-fH-EaP" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="50" id="6s7-G8-mWp"/>
+                                    <constraint firstAttribute="bottom" secondItem="Edf-Jq-aih" secondAttribute="bottom" id="OgG-MG-iXR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Edf-Jq-aih" secondAttribute="trailing" constant="20" id="TdC-lJ-exM"/>
+                                    <constraint firstItem="xzD-fH-EaP" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="UN6-uD-Nt9"/>
+                                    <constraint firstItem="Edf-Jq-aih" firstAttribute="top" secondItem="xzD-fH-EaP" secondAttribute="bottom" constant="-100" id="jnL-2H-lmS"/>
+                                    <constraint firstItem="Edf-Jq-aih" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="20" id="ki1-Do-30L"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Fye-f0-ZLp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nJd-hQ-B7U" firstAttribute="top" secondItem="Fye-f0-ZLp" secondAttribute="top" id="2sD-Eg-Uis"/>
+                            <constraint firstItem="Fye-f0-ZLp" firstAttribute="bottom" secondItem="nJd-hQ-B7U" secondAttribute="bottom" id="CuQ-bh-Ich"/>
+                            <constraint firstItem="Fye-f0-ZLp" firstAttribute="trailing" secondItem="nJd-hQ-B7U" secondAttribute="trailing" id="eN9-hz-vb8"/>
+                            <constraint firstItem="nJd-hQ-B7U" firstAttribute="leading" secondItem="Fye-f0-ZLp" secondAttribute="leading" id="v5O-lC-uAO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokémon Status" id="iHj-Ph-EEb"/>
+                    <connections>
+                        <outlet property="hpLabel" destination="9oy-34-Izp" id="XgC-Wd-Uyk"/>
+                        <outlet property="pokemonImageView" destination="xzD-fH-EaP" id="yvh-bP-pL8"/>
+                        <outlet property="pokemonName" destination="Nps-Hi-ciu" id="W3o-x3-dYW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZ5-gT-4k9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="-71"/>
+            <point key="canvasLocation" x="1612.5" y="-71.83098591549296"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gkK-Bt-z1X">
@@ -247,6 +315,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

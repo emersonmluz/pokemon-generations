@@ -8,7 +8,11 @@
 import UIKit
 
 class ScreenDetailsViewController: UIViewController {
-
+    
+    @IBOutlet weak var pokemonImageView: UIImageView!
+    @IBOutlet weak var pokemonName: UILabel!
+    @IBOutlet weak var hpLabel: UILabel!
+    
     var pokemon: Pokemon?
     var abilities: [Abilities]?
     var type: [Types]?
@@ -21,6 +25,10 @@ class ScreenDetailsViewController: UIViewController {
         loadType()
         loadStats()
         loadLocationArea()
+        
+        pokemonImageView.loadImage(URLAddress: pokemon!.imageURL)
+        pokemonName.text = pokemon?.name
+        
         // Do any additional setup after loading the view.
     }
     
@@ -104,6 +112,7 @@ class ScreenDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.stats = statFile.stats
+                    self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0)
                 }
                 
             } catch let error {
@@ -140,5 +149,26 @@ class ScreenDetailsViewController: UIViewController {
             }
         }
         task.resume()
+    }
+}
+
+extension UIImageView {
+    func loadImage(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let imageData = try? Data(contentsOf: url)
+            
+            DispatchQueue.main.async { [weak self] in
+                if let imageData = imageData {
+                    if let loadedImage = UIImage(data: imageData) {
+                            self?.image = loadedImage
+                    }
+                }
+            }
+        }
+
     }
 }
