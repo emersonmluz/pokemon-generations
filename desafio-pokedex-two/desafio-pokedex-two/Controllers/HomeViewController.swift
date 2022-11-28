@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var nothingResultLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
+    
     var pokemon: [Pokemon] = []
     var arraySearch: [Pokemon] = []
     var generationI: Int = 151
@@ -23,6 +24,9 @@ class HomeViewController: UIViewController {
         
         LoadScreen.start(tableView: tableView, activityIndicator: loadingActivityIndicator)
         loadPokemonList()
+        
+        
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -45,6 +49,16 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let detailsScreen = storyboard!.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
+            
+            
+            navigationController?.pushViewController(detailsScreen, animated: true)
+        }
+    }
+
     
     func loadPokemonList () {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=\(generationI)")
@@ -106,6 +120,15 @@ extension HomeViewController: UITableViewDataSource {
         } else {
             cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
         }
+        
+        let tapImageLeft = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        cell.pokemonImageLeft.addGestureRecognizer(tapImageLeft)
+        cell.pokemonImageLeft.isUserInteractionEnabled = true
+        
+        let tapImageRight = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        cell.pokemonImageRight.addGestureRecognizer(tapImageRight)
+        cell.pokemonImageRight.isUserInteractionEnabled = true
+
         
         return cell
     }

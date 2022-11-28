@@ -30,7 +30,7 @@ class CellSetup: UITableViewCell {
             pokemonImageRight.image = nil
         }
     }
-    
+        
 }
 
 extension UIImageView {

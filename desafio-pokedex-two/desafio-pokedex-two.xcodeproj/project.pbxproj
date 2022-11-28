@@ -17,6 +17,7 @@
 		EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F74A29312A9C0036DE1C /* Pokemon.swift */; };
 		EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F74E293148DE0036DE1C /* CellSetup.swift */; };
 		EEEFE0C52933B4A9007730BB /* LoadScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0C42933B4A9007730BB /* LoadScreen.swift */; };
+		EEEFE0CB29344BAB007730BB /* ScreenDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0CA29344BAB007730BB /* ScreenDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		EEA1F74A29312A9C0036DE1C /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		EEA1F74E293148DE0036DE1C /* CellSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSetup.swift; sourceTree = "<group>"; };
 		EEEFE0C42933B4A9007730BB /* LoadScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadScreen.swift; sourceTree = "<group>"; };
+		EEEFE0CA29344BAB007730BB /* ScreenDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA1F735293121760036DE1C /* HomeViewController.swift */,
+				EEEFE0CA29344BAB007730BB /* ScreenDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */,
 				EEEFE0C52933B4A9007730BB /* LoadScreen.swift in Sources */,
 				EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */,
+				EEEFE0CB29344BAB007730BB /* ScreenDetailsViewController.swift in Sources */,
 				EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */,
 				EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */,
 				EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */,
