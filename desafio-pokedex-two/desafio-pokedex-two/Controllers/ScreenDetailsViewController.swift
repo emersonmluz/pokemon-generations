@@ -38,7 +38,7 @@ class ScreenDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.abilities = abilitiesList.abilities
-                    print(self.abilities!)
+                    print(self.abilities![0].ability["name"]!)
                 }
                 
             } catch let error {
