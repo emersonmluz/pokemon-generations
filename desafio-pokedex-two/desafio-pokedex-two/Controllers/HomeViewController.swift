@@ -99,10 +99,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func imageTapped(sender: UITapGestureRecognizer) {
+    @objc func imageTapped(sender: MyTapGesture) {
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
             
+            detailsScreen.pokemon = pokemon[Int(sender.id!)!]
             
             navigationController?.pushViewController(detailsScreen, animated: true)
         }
@@ -182,11 +183,13 @@ extension HomeViewController: UITableViewDataSource {
             cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
         }
         
-        let tapImageLeft = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        let tapImageLeft = MyTapGesture(target: self, action: #selector(imageTapped))
+        tapImageLeft.id = String(indexPath.row)
         cell.pokemonImageLeft.addGestureRecognizer(tapImageLeft)
         cell.pokemonImageLeft.isUserInteractionEnabled = true
         
-        let tapImageRight = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        let tapImageRight = MyTapGesture(target: self, action: #selector(imageTapped))
+        tapImageRight.id = String((pokemon.count / 2) + indexPath.row)
         cell.pokemonImageRight.addGestureRecognizer(tapImageRight)
         cell.pokemonImageRight.isUserInteractionEnabled = true
 
@@ -194,5 +197,8 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-    
+}
+
+class MyTapGesture: UITapGestureRecognizer {
+    var id: String?
 }
