@@ -20,6 +20,8 @@
 		EEEFE0D12934EFE7007730BB /* Generations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0D02934EFE7007730BB /* Generations.swift */; };
 		EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DA293522CC007730BB /* AbilitiesList.swift */; };
 		EEEFE0DD2935234E007730BB /* Abilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DC2935234E007730BB /* Abilities.swift */; };
+		EEEFE0DF2935329B007730BB /* TypeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DE2935329B007730BB /* TypeList.swift */; };
+		EEEFE0E1293532DB007730BB /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E0293532DB007730BB /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		EEEFE0D02934EFE7007730BB /* Generations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generations.swift; sourceTree = "<group>"; };
 		EEEFE0DA293522CC007730BB /* AbilitiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilitiesList.swift; sourceTree = "<group>"; };
 		EEEFE0DC2935234E007730BB /* Abilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abilities.swift; sourceTree = "<group>"; };
+		EEEFE0DE2935329B007730BB /* TypeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeList.swift; sourceTree = "<group>"; };
+		EEEFE0E0293532DB007730BB /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 				EEEFE0D02934EFE7007730BB /* Generations.swift */,
 				EEEFE0DA293522CC007730BB /* AbilitiesList.swift */,
 				EEEFE0DC2935234E007730BB /* Abilities.swift */,
+				EEEFE0DE2935329B007730BB /* TypeList.swift */,
+				EEEFE0E0293532DB007730BB /* Types.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -191,8 +197,10 @@
 				EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */,
 				EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */,
 				EEEFE0DD2935234E007730BB /* Abilities.swift in Sources */,
+				EEEFE0DF2935329B007730BB /* TypeList.swift in Sources */,
 				EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */,
 				EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */,
+				EEEFE0E1293532DB007730BB /* Types.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
