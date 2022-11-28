@@ -10,23 +10,42 @@ import UIKit
 class ScreenDetailsViewController: UIViewController {
 
     var pokemon: Pokemon?
+    var abilities: [Abilities]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(pokemon?.name ?? "")
+        loadPokemonAbilities()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadPokemonAbilities () {
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/")
+        
+        guard url != nil else {return}
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard data != nil, error == nil else {return}
+            
+            do {
+                let decoder = JSONDecoder()
+                let abilitiesList = try decoder.decode(AbilitiesList.self, from: data!)
+                
+                DispatchQueue.main.async {
+                    self.abilities = abilitiesList.abilities
+                    print(self.abilities!)
+                }
+                
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
     }
-    */
 
 }

@@ -18,6 +18,8 @@
 		EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F74E293148DE0036DE1C /* CellSetup.swift */; };
 		EEEFE0CB29344BAB007730BB /* ScreenDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0CA29344BAB007730BB /* ScreenDetailsViewController.swift */; };
 		EEEFE0D12934EFE7007730BB /* Generations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0D02934EFE7007730BB /* Generations.swift */; };
+		EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DA293522CC007730BB /* AbilitiesList.swift */; };
+		EEEFE0DD2935234E007730BB /* Abilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DC2935234E007730BB /* Abilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		EEA1F74E293148DE0036DE1C /* CellSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSetup.swift; sourceTree = "<group>"; };
 		EEEFE0CA29344BAB007730BB /* ScreenDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDetailsViewController.swift; sourceTree = "<group>"; };
 		EEEFE0D02934EFE7007730BB /* Generations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generations.swift; sourceTree = "<group>"; };
+		EEEFE0DA293522CC007730BB /* AbilitiesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilitiesList.swift; sourceTree = "<group>"; };
+		EEEFE0DC2935234E007730BB /* Abilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				EEA1F748293121D60036DE1C /* PokemonList.swift */,
 				EEA1F74A29312A9C0036DE1C /* Pokemon.swift */,
 				EEEFE0D02934EFE7007730BB /* Generations.swift */,
+				EEEFE0DA293522CC007730BB /* AbilitiesList.swift */,
+				EEEFE0DC2935234E007730BB /* Abilities.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -184,7 +190,9 @@
 				EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */,
 				EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */,
 				EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */,
+				EEEFE0DD2935234E007730BB /* Abilities.swift in Sources */,
 				EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */,
+				EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
