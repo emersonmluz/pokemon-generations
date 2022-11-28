@@ -22,6 +22,8 @@
 		EEEFE0DD2935234E007730BB /* Abilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DC2935234E007730BB /* Abilities.swift */; };
 		EEEFE0DF2935329B007730BB /* TypeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0DE2935329B007730BB /* TypeList.swift */; };
 		EEEFE0E1293532DB007730BB /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E0293532DB007730BB /* Types.swift */; };
+		EEEFE0E32935365F007730BB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E22935365F007730BB /* Stats.swift */; };
+		EEEFE0E529353925007730BB /* StatsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E429353925007730BB /* StatsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		EEEFE0DC2935234E007730BB /* Abilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Abilities.swift; sourceTree = "<group>"; };
 		EEEFE0DE2935329B007730BB /* TypeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeList.swift; sourceTree = "<group>"; };
 		EEEFE0E0293532DB007730BB /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		EEEFE0E22935365F007730BB /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		EEEFE0E429353925007730BB /* StatsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				EEEFE0DC2935234E007730BB /* Abilities.swift */,
 				EEEFE0DE2935329B007730BB /* TypeList.swift */,
 				EEEFE0E0293532DB007730BB /* Types.swift */,
+				EEEFE0E22935365F007730BB /* Stats.swift */,
+				EEEFE0E429353925007730BB /* StatsList.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */,
+				EEEFE0E32935365F007730BB /* Stats.swift in Sources */,
 				EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */,
 				EEEFE0CB29344BAB007730BB /* ScreenDetailsViewController.swift in Sources */,
 				EEEFE0D12934EFE7007730BB /* Generations.swift in Sources */,
@@ -197,6 +204,7 @@
 				EEA1F749293121D60036DE1C /* PokemonList.swift in Sources */,
 				EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */,
 				EEEFE0DD2935234E007730BB /* Abilities.swift in Sources */,
+				EEEFE0E529353925007730BB /* StatsList.swift in Sources */,
 				EEEFE0DF2935329B007730BB /* TypeList.swift in Sources */,
 				EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */,
 				EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */,
