@@ -13,24 +13,74 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var nothingResultLabel: UILabel!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var generationsPopUpButton: UIButton!
     
     var pokemon: [Pokemon] = []
     var arrayOfSearch: [Pokemon] = []
-    var generationI: Int = 151
-
+    var numberOfNewPokemonsInGenerationCurrent: Int = 151
+    var numberOfOldPokemonsInGenerationPrevious: Int = 0
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tableView.dataSource = self
         
         startLoadingScreen()
         loadPokemonList()
         
-        
-        
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        generationsPopUpButton.layer.cornerRadius = 6
+        setPopUpButton()
     }
     
+    func setPopUpButton () {
+        
+        let optionClosure = {(action: UIAction) in
+            
+            switch action.title {
+            case Generations.generationI.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 0
+                self.numberOfNewPokemonsInGenerationCurrent = 151
+            case Generations.generationII.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 151
+                self.numberOfNewPokemonsInGenerationCurrent = 100
+            case Generations.generationIII.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 251
+                self.numberOfNewPokemonsInGenerationCurrent = 135
+            case Generations.generationIV.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 386
+                self.numberOfNewPokemonsInGenerationCurrent = 107
+            case Generations.generationV.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 493
+                self.numberOfNewPokemonsInGenerationCurrent = 156
+            case Generations.generationVI.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 649
+                self.numberOfNewPokemonsInGenerationCurrent = 72
+            case Generations.generationVII.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 721
+                self.numberOfNewPokemonsInGenerationCurrent = 88
+            case Generations.generationVIII.rawValue:
+                self.numberOfOldPokemonsInGenerationPrevious = 809
+                self.numberOfNewPokemonsInGenerationCurrent = 96
+            default:
+                self.numberOfOldPokemonsInGenerationPrevious = 0
+                self.numberOfNewPokemonsInGenerationCurrent = 151
+            }
+            
+            self.loadPokemonList()
+            
+        }
+        
+        generationsPopUpButton.menu = UIMenu(children: [
+            UIAction(title: Generations.generationI.rawValue, state: .on, handler: optionClosure),
+            UIAction(title: Generations.generationII.rawValue, handler: optionClosure),
+            UIAction(title: Generations.generationIII.rawValue, handler: optionClosure),
+            UIAction(title: Generations.generationIV.rawValue, state: .on, handler: optionClosure),
+            UIAction(title: Generations.generationV.rawValue, state: .on, handler: optionClosure),
+            UIAction(title: Generations.generationVI.rawValue, state: .on, handler: optionClosure),
+            UIAction(title: Generations.generationVII.rawValue, state: .on, handler: optionClosure),
+            UIAction(title: Generations.generationVIII.rawValue, state: .on, handler: optionClosure)
+        ])
+    }
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
         startLoadingScreen()
@@ -72,7 +122,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadPokemonList () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=\(generationI)")
+        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)")
         
         guard url != nil else {return}
         
@@ -133,7 +183,6 @@ extension HomeViewController: UITableViewDataSource {
             cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
         }
         
-        let home = HomeViewController()
         let tapImageLeft = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         cell.pokemonImageLeft.addGestureRecognizer(tapImageLeft)
         cell.pokemonImageLeft.isUserInteractionEnabled = true

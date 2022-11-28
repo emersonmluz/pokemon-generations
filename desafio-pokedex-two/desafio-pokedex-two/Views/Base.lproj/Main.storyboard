@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pesquisa: Todos" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgV-TG-SYb">
-                                        <rect key="frame" x="60" y="8" width="200" height="34"/>
+                                        <rect key="frame" x="120" y="8" width="140" height="34"/>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -35,12 +36,31 @@
                                             <action selector="searchButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eai-sV-Hqh"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vz5-Z4-Cx3">
+                                        <rect key="frame" x="10" y="10" width="100" height="29"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="2" height="1"/>
+                                        <menu key="menu" id="TQN-8v-PkU">
+                                            <children>
+                                                <command title="Item 1" id="IEx-IY-I6Y"/>
+                                                <command title="Item 2" id="fUb-rj-5PB"/>
+                                            </children>
+                                        </menu>
+                                        <state key="normal" title="Generations">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="rgV-TG-SYb" firstAttribute="leading" secondItem="Vz5-Z4-Cx3" secondAttribute="trailing" constant="10" id="1He-E5-eAr"/>
                                     <constraint firstAttribute="trailing" secondItem="rgV-TG-SYb" secondAttribute="trailing" constant="60" id="EFy-Q6-xzr"/>
                                     <constraint firstItem="rgV-TG-SYb" firstAttribute="centerY" secondItem="R3t-LJ-GF5" secondAttribute="centerY" id="SNE-Xq-IFa"/>
-                                    <constraint firstItem="rgV-TG-SYb" firstAttribute="leading" secondItem="R3t-LJ-GF5" secondAttribute="leading" constant="60" id="ZI3-Rk-95A"/>
+                                    <constraint firstItem="Vz5-Z4-Cx3" firstAttribute="leading" secondItem="R3t-LJ-GF5" secondAttribute="leading" constant="10" id="VH0-8j-Mwm"/>
+                                    <constraint firstItem="Vz5-Z4-Cx3" firstAttribute="top" secondItem="R3t-LJ-GF5" secondAttribute="top" constant="10" id="XLx-tg-75s"/>
+                                    <constraint firstItem="rgV-TG-SYb" firstAttribute="leading" secondItem="R3t-LJ-GF5" secondAttribute="leading" constant="120" id="ZI3-Rk-95A"/>
                                     <constraint firstAttribute="height" constant="50" id="b8C-Va-7uO"/>
                                     <constraint firstAttribute="trailing" secondItem="Cdo-kD-Es2" secondAttribute="trailing" constant="10" id="eRh-bK-hq8"/>
                                     <constraint firstItem="Cdo-kD-Es2" firstAttribute="leading" secondItem="rgV-TG-SYb" secondAttribute="trailing" id="oRu-g2-kR3"/>
@@ -172,6 +192,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7R0-Qs-MyP"/>
                     <connections>
+                        <outlet property="generationsPopUpButton" destination="Vz5-Z4-Cx3" id="7Qw-Iy-csx"/>
                         <outlet property="loadingActivityIndicator" destination="7Pn-2g-GIm" id="d1M-3a-1TX"/>
                         <outlet property="nothingResultLabel" destination="w5P-dH-mmR" id="Zt8-uu-ZyC"/>
                         <outlet property="searchTextField" destination="rgV-TG-SYb" id="hcR-5P-Kct"/>
@@ -220,6 +241,9 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
