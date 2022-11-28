@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Pokémon Generations-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="Main" id="BYZ-38-t0r" customClass="HomeViewController" customModule="desafio_pokedex_two" customModuleProvider="target" sceneMemberID="viewController">
@@ -190,7 +190,9 @@
                             <constraint firstItem="R3t-LJ-GF5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wwc-tO-vIN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7R0-Qs-MyP"/>
+                    <navigationItem key="navigationItem" title="Pokémon Generations" id="7R0-Qs-MyP">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Yz7-9N-oJS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="generationsPopUpButton" destination="Vz5-Z4-Cx3" id="7Qw-Iy-csx"/>
                         <outlet property="loadingActivityIndicator" destination="7Pn-2g-GIm" id="d1M-3a-1TX"/>
@@ -203,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="797" y="-72"/>
         </scene>
-        <!--Screen Details View Controller-->
+        <!--Pokémon Status-->
         <scene sceneID="RQe-Yg-4wi">
             <objects>
                 <viewController storyboardIdentifier="ScreenDetails" id="6BH-LA-okR" customClass="ScreenDetailsViewController" customModule="desafio_pokedex_two" customModuleProvider="target" sceneMemberID="viewController">
@@ -213,6 +215,7 @@
                         <viewLayoutGuide key="safeArea" id="Fye-f0-ZLp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Pokémon Status" id="iHj-Ph-EEb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZ5-gT-4k9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

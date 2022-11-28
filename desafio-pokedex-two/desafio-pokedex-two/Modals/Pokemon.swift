@@ -7,7 +7,24 @@
 
 import Foundation
 
-struct Pokemon: Codable {
+class Pokemon: Codable {
+    var id: String {
+        var indentifier: String = ""
+        var barNumber: Int = 0
+    
+        for letter in habilityURL {
+            if letter == "/" {
+                barNumber += 1
+            }
+            if barNumber == 6 && letter != "/" {
+                indentifier += String(letter)
+                
+            }
+        }
+        
+        return indentifier
+    }
+    
     var name: String
     var habilityURL: String
     var imageURL: String {

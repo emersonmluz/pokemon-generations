@@ -62,8 +62,7 @@ class HomeViewController: UIViewController {
                 self.numberOfOldPokemonsInGenerationPrevious = 809
                 self.numberOfNewPokemonsInGenerationCurrent = 96
             default:
-                self.numberOfOldPokemonsInGenerationPrevious = 0
-                self.numberOfNewPokemonsInGenerationCurrent = 151
+                self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
             
             self.loadPokemonList()
