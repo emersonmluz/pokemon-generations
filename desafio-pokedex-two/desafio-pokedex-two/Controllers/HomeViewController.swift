@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
     @objc func imageTapped(sender: MyTapGesture) {
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
-            print(sender.id!)
+           
             detailsScreen.pokemon = pokemon[sender.id! - numberOfOldPokemonsInGenerationPrevious]
             
             navigationController?.pushViewController(detailsScreen, animated: true)
