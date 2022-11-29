@@ -244,7 +244,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edf-Jq-aih" userLabel="StatsView">
-                                        <rect key="frame" x="20" y="195" width="280" height="373"/>
+                                        <rect key="frame" x="20" y="195" width="280" height="353"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nps-Hi-ciu">
                                                 <rect key="frame" x="10" y="75" width="260" height="0.0"/>
@@ -263,19 +263,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cZE-lN-5b9" userLabel="StatsStackView">
-                                                <rect key="frame" x="10" y="239.5" width="260" height="123.5"/>
+                                                <rect key="frame" x="10" y="239.5" width="260" height="103.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIX-8N-ef1" userLabel="AttackView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="24.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="20.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9x-AK-1eK">
-                                                                <rect key="frame" x="10" y="1" width="170" height="22.5"/>
+                                                                <rect key="frame" x="10" y="-1" width="170" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diA-cJ-vMm">
-                                                                <rect key="frame" x="190" y="1" width="60" height="22.5"/>
+                                                                <rect key="frame" x="190" y="-1" width="60" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -291,16 +291,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCo-Pv-tcN" userLabel="DefenseView">
-                                                        <rect key="frame" x="0.0" y="24.5" width="260" height="25"/>
+                                                        <rect key="frame" x="0.0" y="20.5" width="260" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFP-1G-h0J">
-                                                                <rect key="frame" x="10" y="1.5" width="170" height="22.5"/>
+                                                                <rect key="frame" x="10" y="-0.5" width="170" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQ2-QA-mGP">
-                                                                <rect key="frame" x="190" y="1.5" width="60" height="22.5"/>
+                                                                <rect key="frame" x="190" y="-0.5" width="60" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -316,16 +316,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m30-02-6dx" userLabel="SpAttackView">
-                                                        <rect key="frame" x="0.0" y="49.5" width="260" height="24.5"/>
+                                                        <rect key="frame" x="0.0" y="41.5" width="260" height="20.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sp. Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHF-cR-mwC">
-                                                                <rect key="frame" x="10" y="1" width="170" height="22.5"/>
+                                                                <rect key="frame" x="10" y="-1" width="170" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LI5-xS-Jdu">
-                                                                <rect key="frame" x="190" y="1" width="60" height="22.5"/>
+                                                                <rect key="frame" x="190" y="-1" width="60" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -341,16 +341,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2C-oD-yLm" userLabel="SpDefenseView">
-                                                        <rect key="frame" x="0.0" y="74" width="260" height="25"/>
+                                                        <rect key="frame" x="0.0" y="62" width="260" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sp. Defense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apy-8f-Nfz">
-                                                                <rect key="frame" x="10" y="1" width="170" height="22.5"/>
+                                                                <rect key="frame" x="10" y="-1" width="170" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWy-22-Vvg">
-                                                                <rect key="frame" x="190" y="1" width="60" height="22.5"/>
+                                                                <rect key="frame" x="190" y="-1" width="60" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -366,16 +366,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyj-Pu-ehG" userLabel="SpeedView">
-                                                        <rect key="frame" x="0.0" y="99" width="260" height="24.5"/>
+                                                        <rect key="frame" x="0.0" y="83" width="260" height="20.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSP-fe-HqS">
-                                                                <rect key="frame" x="10" y="1" width="170" height="22.5"/>
+                                                                <rect key="frame" x="10" y="-1" width="170" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blR-No-SMt">
-                                                                <rect key="frame" x="190" y="1" width="60" height="22.5"/>
+                                                                <rect key="frame" x="190" y="-1" width="60" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -516,7 +516,7 @@
                                     <constraint firstItem="LYE-HM-nI5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="DHc-Fn-VoK"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="40" id="F3f-pU-WTi"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="H1v-tb-OgH"/>
-                                    <constraint firstAttribute="bottom" secondItem="Edf-Jq-aih" secondAttribute="bottom" id="OgG-MG-iXR"/>
+                                    <constraint firstAttribute="bottom" secondItem="Edf-Jq-aih" secondAttribute="bottom" constant="20" id="OgG-MG-iXR"/>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="P8f-ho-pu2"/>
                                     <constraint firstAttribute="trailing" secondItem="Edf-Jq-aih" secondAttribute="trailing" constant="20" id="TdC-lJ-exM"/>
                                     <constraint firstItem="Edf-Jq-aih" firstAttribute="top" secondItem="xzD-fH-EaP" secondAttribute="bottom" constant="-100" id="jnL-2H-lmS"/>
@@ -543,6 +543,7 @@
                         <outlet property="pokemonImageView" destination="xzD-fH-EaP" id="yvh-bP-pL8"/>
                         <outlet property="pokemonName" destination="Nps-Hi-ciu" id="W3o-x3-dYW"/>
                         <outlet property="pokemonTypeLabel" destination="UVx-iy-YsY" id="Z7X-sY-36r"/>
+                        <outlet property="progressBar" destination="5VS-Yx-aoT" id="3kk-Pb-ntW"/>
                         <outlet property="statsStackView" destination="cZE-lN-5b9" id="ozF-qU-PQA"/>
                         <outlet property="statsView" destination="Edf-Jq-aih" id="kIH-W8-WMG"/>
                         <outlet property="techLabel" destination="zco-Fi-xRj" id="KtK-EK-tHk"/>

@@ -21,6 +21,7 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var techLabel: UILabel!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var contornoView: UIView!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
@@ -115,6 +116,8 @@ class ScreenDetailsViewController: UIViewController {
                         self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
                     }
                     self.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
+                    self.progressBar.progressTintColor = UIColor(named: (self.type?[0].type["name"]!)!)
+                    
                     self.containerView.alpha = 1
                     self.loading.isHidden = true
                     self.containerView.isUserInteractionEnabled = true
