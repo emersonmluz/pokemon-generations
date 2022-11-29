@@ -13,6 +13,9 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var hpLabel: UILabel!
     
+    @IBOutlet weak var pokemonTypeLabel: UILabel!
+    @IBOutlet var pokemonTechLabel: [UILabel]!
+    
     var pokemon: Pokemon?
     var abilities: [Abilities]?
     var type: [Types]?
@@ -52,6 +55,10 @@ class ScreenDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.abilities = abilitiesList.abilities
+                    self.pokemonTechLabel[0].text = self.abilities![0].ability["name"]
+                    if self.abilities!.count > 1 {
+                        self.pokemonTechLabel[1].text = self.abilities![1].ability["name"]
+                    }
                 }
                 
             } catch let error {
@@ -81,6 +88,11 @@ class ScreenDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.type = typeList.types
+                    self.pokemonTypeLabel.text = self.type![0].type["name"]!
+                    if self.type!.count
+                        > 1 {
+                        self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
+                    }
                 }
                 
             } catch let error {
@@ -112,7 +124,7 @@ class ScreenDetailsViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.stats = statFile.stats
-                    self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0)
+                    self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
                 }
                 
             } catch let error {
