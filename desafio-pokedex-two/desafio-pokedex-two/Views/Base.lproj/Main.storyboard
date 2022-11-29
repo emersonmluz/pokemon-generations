@@ -97,12 +97,21 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orq-g2-dip">
+                                                                    <rect key="frame" x="0.0" y="125" width="48.5" height="22.5"/>
+                                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="OEb-b3-l4G" firstAttribute="centerX" secondItem="y3k-xR-6U3" secondAttribute="centerX" id="BZk-Ec-4aq"/>
                                                                 <constraint firstItem="GUh-I3-NAW" firstAttribute="top" secondItem="y3k-xR-6U3" secondAttribute="top" constant="20" id="MDY-Mw-NLu"/>
+                                                                <constraint firstItem="orq-g2-dip" firstAttribute="leading" secondItem="y3k-xR-6U3" secondAttribute="leading" id="NBN-jG-OLP"/>
+                                                                <constraint firstItem="orq-g2-dip" firstAttribute="top" secondItem="GUh-I3-NAW" secondAttribute="bottom" constant="5" id="X7e-Aq-FUZ"/>
                                                                 <constraint firstItem="OEb-b3-l4G" firstAttribute="top" secondItem="GUh-I3-NAW" secondAttribute="bottom" constant="5" id="nXz-cK-Hrl"/>
+                                                                <constraint firstItem="OEb-b3-l4G" firstAttribute="leading" secondItem="orq-g2-dip" secondAttribute="trailing" constant="5" id="qg2-rI-qqL"/>
                                                                 <constraint firstItem="GUh-I3-NAW" firstAttribute="centerX" secondItem="y3k-xR-6U3" secondAttribute="centerX" id="sOh-Qv-meX"/>
                                                             </constraints>
                                                         </view>
@@ -122,13 +131,22 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMs-i7-2OI">
+                                                                    <rect key="frame" x="0.0" y="125" width="48.5" height="22.5"/>
+                                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="VHb-YH-4FQ" firstAttribute="centerX" secondItem="s0P-MV-7I6" secondAttribute="centerX" id="2Hy-rP-sB5"/>
+                                                                <constraint firstItem="AMs-i7-2OI" firstAttribute="leading" secondItem="s0P-MV-7I6" secondAttribute="leading" id="7K2-CX-1db"/>
                                                                 <constraint firstItem="A3O-4J-PgB" firstAttribute="centerX" secondItem="s0P-MV-7I6" secondAttribute="centerX" id="NMh-aa-0r4"/>
                                                                 <constraint firstItem="A3O-4J-PgB" firstAttribute="top" secondItem="VHb-YH-4FQ" secondAttribute="bottom" constant="5" id="frG-q7-8ra"/>
                                                                 <constraint firstItem="VHb-YH-4FQ" firstAttribute="top" secondItem="s0P-MV-7I6" secondAttribute="top" constant="20" id="plB-fp-9vt"/>
+                                                                <constraint firstItem="AMs-i7-2OI" firstAttribute="top" secondItem="VHb-YH-4FQ" secondAttribute="bottom" constant="5" id="qHD-KF-RaP"/>
+                                                                <constraint firstItem="A3O-4J-PgB" firstAttribute="leading" secondItem="AMs-i7-2OI" secondAttribute="trailing" constant="5" id="t90-Sf-6KC"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -150,6 +168,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="idLeft" destination="orq-g2-dip" id="QXh-py-ZCU"/>
+                                            <outlet property="idRight" destination="AMs-i7-2OI" id="NEy-Ov-XoF"/>
                                             <outlet property="pokemonImageLeft" destination="GUh-I3-NAW" id="efp-AH-mOS"/>
                                             <outlet property="pokemonImageRight" destination="VHb-YH-4FQ" id="RWM-e5-5l8"/>
                                             <outlet property="pokemonNameLeft" destination="OEb-b3-l4G" id="weO-BG-0K7"/>
