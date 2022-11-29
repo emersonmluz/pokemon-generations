@@ -18,7 +18,7 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet var statsValuesLabel: [UILabel]!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var statsView: UIView!
-    
+    @IBOutlet weak var statsStackView: UIStackView!
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
@@ -37,7 +37,7 @@ class ScreenDetailsViewController: UIViewController {
         pokemonName.text = pokemon?.name
         
         statsView.layer.cornerRadius = 10
-        
+        statsStackView.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     
