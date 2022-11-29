@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class HomeViewController: UIViewController {
     
@@ -19,11 +20,16 @@ class HomeViewController: UIViewController {
     var arrayOfSearch: [Pokemon] = []
     var numberOfNewPokemonsInGenerationCurrent: Int = 151
     var numberOfOldPokemonsInGenerationPrevious: Int = 0
+    var sound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        
+        sound = AudioFile.importAudioFile()
+        sound?.numberOfLoops = -1
+        sound?.play()
         
         startLoadingScreen()
         loadPokemonList()
