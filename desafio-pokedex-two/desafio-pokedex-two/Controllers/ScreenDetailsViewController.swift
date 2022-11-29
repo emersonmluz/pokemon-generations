@@ -12,7 +12,6 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var hpLabel: UILabel!
-    
     @IBOutlet weak var pokemonTypeLabel: UILabel!
     @IBOutlet var pokemonTechLabel: [UILabel]!
     @IBOutlet var statsValuesLabel: [UILabel]!
@@ -20,6 +19,7 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsStackView: UIStackView!
     @IBOutlet weak var techLabel: UILabel!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
@@ -29,16 +29,21 @@ class ScreenDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadPokemonAbilities()
-        loadType()
-        loadStats()
-        loadLocationArea()
+        
+        containerView.alpha = 0.5
+        loading.isHidden = false
+        self.containerView.isUserInteractionEnabled = false
         
         pokemonImageView.loadImage(URLAddress: pokemon!.imageURL)
         pokemonName.text = pokemon?.name
         
         statsView.layer.cornerRadius = 10
         statsStackView.layer.cornerRadius = 10
+        
+        loadPokemonAbilities()
+        loadType()
+        loadStats()
+        loadLocationArea()
         
         // Do any additional setup after loading the view.
     }
@@ -107,6 +112,9 @@ class ScreenDetailsViewController: UIViewController {
                         self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
                     }
                     self.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
+                    self.containerView.alpha = 1
+                    self.loading.isHidden = true
+                    self.containerView.isUserInteractionEnabled = true
                 }
                 
             } catch let error {
