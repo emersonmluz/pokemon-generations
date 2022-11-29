@@ -20,6 +20,7 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var statsStackView: UIStackView!
     @IBOutlet weak var techLabel: UILabel!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var contornoView: UIView!
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
@@ -33,6 +34,8 @@ class ScreenDetailsViewController: UIViewController {
         containerView.alpha = 0.5
         loading.isHidden = false
         self.containerView.isUserInteractionEnabled = false
+        
+        contornoView.layer.cornerRadius = 150
         
         pokemonImageView.loadImage(URLAddress: pokemon!.imageURL)
         pokemonName.text = pokemon?.name

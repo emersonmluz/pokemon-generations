@@ -236,6 +236,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJd-hQ-B7U" userLabel="ContainerView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jz4-JJ-gn5" userLabel="ContornoView">
+                                        <rect key="frame" x="40" y="215" width="240" height="197"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Jz4-JJ-gn5" secondAttribute="height" multiplier="40:33" constant="1" id="NzC-Zd-aW6"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edf-Jq-aih" userLabel="StatsView">
                                         <rect key="frame" x="20" y="195" width="280" height="373"/>
                                         <subviews>
@@ -505,7 +512,10 @@
                                 <constraints>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="70" id="6Zi-Zu-Lb9"/>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="115" id="6s7-G8-mWp"/>
+                                    <constraint firstItem="Jz4-JJ-gn5" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="215" id="9VJ-E3-XVq"/>
                                     <constraint firstItem="LYE-HM-nI5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="DHc-Fn-VoK"/>
+                                    <constraint firstItem="Jz4-JJ-gn5" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="40" id="F3f-pU-WTi"/>
+                                    <constraint firstItem="Jz4-JJ-gn5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="H1v-tb-OgH"/>
                                     <constraint firstAttribute="bottom" secondItem="Edf-Jq-aih" secondAttribute="bottom" id="OgG-MG-iXR"/>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="P8f-ho-pu2"/>
                                     <constraint firstAttribute="trailing" secondItem="Edf-Jq-aih" secondAttribute="trailing" constant="20" id="TdC-lJ-exM"/>
@@ -527,6 +537,7 @@
                     <navigationItem key="navigationItem" title="Pokémon Status" id="iHj-Ph-EEb"/>
                     <connections>
                         <outlet property="containerView" destination="nJd-hQ-B7U" id="LUv-zj-XNE"/>
+                        <outlet property="contornoView" destination="Jz4-JJ-gn5" id="OZ9-GT-4co"/>
                         <outlet property="hpLabel" destination="9oy-34-Izp" id="XgC-Wd-Uyk"/>
                         <outlet property="loading" destination="LYE-HM-nI5" id="qwJ-wL-OML"/>
                         <outlet property="pokemonImageView" destination="xzD-fH-EaP" id="yvh-bP-pL8"/>

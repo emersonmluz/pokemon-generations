@@ -65,6 +65,7 @@ class HomeViewController: UIViewController {
                 self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
             
+            self.arrayOfSearch = []
             self.startLoadingScreen()
             self.loadPokemonList()
             
@@ -104,7 +105,7 @@ class HomeViewController: UIViewController {
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
             
-            detailsScreen.pokemon = pokemon[(sender.id!)]
+            detailsScreen.pokemon = pokemon[sender.id!]
             
             navigationController?.pushViewController(detailsScreen, animated: true)
         }
