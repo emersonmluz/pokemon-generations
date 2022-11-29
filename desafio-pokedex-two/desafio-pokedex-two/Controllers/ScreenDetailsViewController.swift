@@ -19,6 +19,7 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsStackView: UIStackView!
+    @IBOutlet weak var techLabel: UILabel!
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
@@ -38,6 +39,7 @@ class ScreenDetailsViewController: UIViewController {
         
         statsView.layer.cornerRadius = 10
         statsStackView.layer.cornerRadius = 10
+        
         // Do any additional setup after loading the view.
     }
     
@@ -64,6 +66,11 @@ class ScreenDetailsViewController: UIViewController {
                     self.pokemonTechLabel[0].text = self.abilities![0].ability["name"]
                     if self.abilities!.count > 1 {
                         self.pokemonTechLabel[1].text = self.abilities![1].ability["name"]
+                        self.pokemonTechLabel[1].isHidden = false
+                        self.techLabel.isHidden = false
+                    } else {
+                        self.pokemonTechLabel[1].isHidden = true
+                        self.techLabel.isHidden = true
                     }
                 }
                 
