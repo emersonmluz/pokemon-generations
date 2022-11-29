@@ -15,6 +15,7 @@ class ScreenDetailsViewController: UIViewController {
     
     @IBOutlet weak var pokemonTypeLabel: UILabel!
     @IBOutlet var pokemonTechLabel: [UILabel]!
+    @IBOutlet var statsValuesLabel: [UILabel]!
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
