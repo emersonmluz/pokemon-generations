@@ -65,6 +65,7 @@ class HomeViewController: UIViewController {
                 self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
             
+            self.startLoadingScreen()
             self.loadPokemonList()
             
         }
