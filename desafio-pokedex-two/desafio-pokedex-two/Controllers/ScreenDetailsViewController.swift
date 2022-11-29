@@ -126,6 +126,11 @@ class ScreenDetailsViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.stats = statFile.stats
                     self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
+                    self.statsValuesLabel[0].text = String(self.stats?[1].baseStat ?? 0)
+                    self.statsValuesLabel[1].text = String(self.stats?[2].baseStat ?? 0)
+                    self.statsValuesLabel[2].text = String(self.stats?[3].baseStat ?? 0)
+                    self.statsValuesLabel[3].text = String(self.stats?[4].baseStat ?? 0)
+                    self.statsValuesLabel[4].text = String(self.stats?[5].baseStat ?? 0)
                 }
                 
             } catch let error {
