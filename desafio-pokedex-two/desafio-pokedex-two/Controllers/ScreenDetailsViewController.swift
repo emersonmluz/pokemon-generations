@@ -16,6 +16,9 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var pokemonTypeLabel: UILabel!
     @IBOutlet var pokemonTechLabel: [UILabel]!
     @IBOutlet var statsValuesLabel: [UILabel]!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var statsView: UIView!
+    
     
     var pokemon: Pokemon?
     var abilities: [Abilities]?
@@ -32,6 +35,8 @@ class ScreenDetailsViewController: UIViewController {
         
         pokemonImageView.loadImage(URLAddress: pokemon!.imageURL)
         pokemonName.text = pokemon?.name
+        
+        statsView.layer.cornerRadius = 10
         
         // Do any additional setup after loading the view.
     }
@@ -94,6 +99,7 @@ class ScreenDetailsViewController: UIViewController {
                         > 1 {
                         self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
                     }
+                    self.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
                 }
                 
             } catch let error {
