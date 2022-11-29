@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        searchTextField.delegate = self
         
         sound = AudioFile.importAudioFile()
         sound?.numberOfLoops = -1
@@ -36,6 +37,17 @@ class HomeViewController: UIViewController {
         
         generationsPopUpButton.layer.cornerRadius = 6
         setPopUpButton()
+        
+        touchScreen()
+    }
+    
+    @objc func dismissKeyboard () {
+        searchTextField.resignFirstResponder()
+    }
+    
+    func touchScreen () {
+        let touch = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(touch)
     }
     
     func setPopUpButton () {
@@ -71,6 +83,7 @@ class HomeViewController: UIViewController {
                 self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
             
+            self.dismissKeyboard()
             self.arrayOfSearch = []
             self.startLoadingScreen()
             self.loadPokemonList()
@@ -90,6 +103,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
+        dismissKeyboard()
         startLoadingScreen()
         search()
         tableView.reloadData()
@@ -108,6 +122,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func imageTapped(sender: MyTapGesture) {
+        dismissKeyboard()
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
            
@@ -209,4 +224,18 @@ extension HomeViewController: UITableViewDataSource {
 
 class MyTapGesture: UITapGestureRecognizer {
     var id: Int?
+}
+
+extension HomeViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismissKeyboard()
+        startLoadingScreen()
+        search()
+        tableView.reloadData()
+        stopLoadingScreen()
+        
+        return true
+    }
+    
 }
