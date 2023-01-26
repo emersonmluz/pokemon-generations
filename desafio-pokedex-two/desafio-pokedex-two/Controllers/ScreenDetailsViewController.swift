@@ -28,9 +28,11 @@ class ScreenDetailsViewController: UIViewController {
     var type: [Types]?
     var stats: [Stats]?
     var encounters: [LocationArea]?
+    var apiBrain = ApiBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        apiBrain.delegate = self
         
         containerView.alpha = 0.5
         loading.isHidden = false
@@ -44,7 +46,7 @@ class ScreenDetailsViewController: UIViewController {
         statsView.layer.cornerRadius = 10
         statsStackView.layer.cornerRadius = 10
         
-        loadPokemonAbilities()
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/", type: AbilitiesList.self)
         loadType()
         loadStats()
         loadLocationArea()
@@ -52,43 +54,7 @@ class ScreenDetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func loadPokemonAbilities () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/")
-        
-        guard url != nil else {return}
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard data != nil, error == nil else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let abilitiesList = try decoder.decode(AbilitiesList.self, from: data!)
-                
-                DispatchQueue.main.async {
-                    self.abilities = abilitiesList.abilities
-                    self.pokemonTechLabel[0].text = self.abilities![0].ability["name"]
-                    if self.abilities!.count > 1 {
-                        self.pokemonTechLabel[1].text = self.abilities![1].ability["name"]
-                        self.pokemonTechLabel[1].isHidden = false
-                        self.techLabel.isHidden = false
-                    } else {
-                        self.pokemonTechLabel[1].isHidden = true
-                        self.techLabel.isHidden = true
-                    }
-                }
-                
-            } catch let error {
-                print(error)
-            }
-        }
-        task.resume()
-    }
+
     
     func loadType () {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon-form/\(self.pokemon!.id)/")
@@ -216,4 +182,24 @@ extension UIImageView {
         }
 
     }
+}
+
+extension ScreenDetailsViewController: RequestDealings {
+    func decoderSuccess<T>(data: T) {
+        if let abilityList = data as? AbilitiesList {
+            self.abilities = abilityList.abilities
+            self.pokemonTechLabel[0].text = self.abilities![0].ability["name"]
+            if self.abilities!.count > 1 {
+                self.pokemonTechLabel[1].text = self.abilities![1].ability["name"]
+                self.pokemonTechLabel[1].isHidden = false
+                self.techLabel.isHidden = false
+            } else {
+                self.pokemonTechLabel[1].isHidden = true
+                self.techLabel.isHidden = true
+            }
+        }
+        
+    }
+    
+    
 }

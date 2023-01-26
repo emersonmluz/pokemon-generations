@@ -146,37 +146,6 @@ class HomeViewController: UIViewController {
         tableView.alpha = 1
         tableView.isUserInteractionEnabled = true
     }
-    
-//    func loadPokemonList () {
-//        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)")
-//        
-//        guard url != nil else {return}
-//        
-//        var request = URLRequest(url: url!)
-//        request.httpMethod = "GET"
-//        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
-//        
-//        let session = URLSession.shared
-//        
-//        let task = session.dataTask(with: request) { data, response, error in
-//            guard data != nil, error == nil else {return}
-//            
-//            do {
-//                let decoder = JSONDecoder()
-//                let pokemonList = try decoder.decode(PokemonList.self, from: data!)
-//                
-//                DispatchQueue.main.async {
-//                    self.pokemon = pokemonList.result
-//                    self.tableView.reloadData()
-//                    self.stopLoadingScreen()
-//                }
-//                
-//            } catch let error {
-//                print(error)
-//            }
-//        }
-//        task.resume()
-//    }
 }
 
 extension HomeViewController: UITableViewDataSource {
