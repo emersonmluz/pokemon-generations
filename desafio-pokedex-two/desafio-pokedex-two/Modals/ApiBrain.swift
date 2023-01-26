@@ -30,7 +30,7 @@ class ApiBrain {
             
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(PokemonList.self, from: data!)
+                let response = try decoder.decode(Generic.self, from: data!)
              
                 DispatchQueue.main.async {
                     self.delegate?.decoderSuccess(data: response)

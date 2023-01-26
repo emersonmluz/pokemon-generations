@@ -25,7 +25,6 @@
 		EEEFE0E1293532DB007730BB /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E0293532DB007730BB /* Types.swift */; };
 		EEEFE0E32935365F007730BB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E22935365F007730BB /* Stats.swift */; };
 		EEEFE0E529353925007730BB /* StatsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0E429353925007730BB /* StatsList.swift */; };
-		EEEFE0F329354C31007730BB /* LocationArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0F229354C31007730BB /* LocationArea.swift */; };
 		EEEFE0F729364DAB007730BB /* pokemonTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EEEFE0F629364DAB007730BB /* pokemonTheme.mp3 */; };
 		EEEFE0FA29364DDC007730BB /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFE0F929364DDC007730BB /* AudioFile.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +50,6 @@
 		EEEFE0E0293532DB007730BB /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		EEEFE0E22935365F007730BB /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		EEEFE0E429353925007730BB /* StatsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsList.swift; sourceTree = "<group>"; };
-		EEEFE0F229354C31007730BB /* LocationArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationArea.swift; sourceTree = "<group>"; };
 		EEEFE0F629364DAB007730BB /* pokemonTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pokemonTheme.mp3; sourceTree = "<group>"; };
 		EEEFE0F929364DDC007730BB /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +128,6 @@
 				EEEFE0E0293532DB007730BB /* Types.swift */,
 				EEEFE0E22935365F007730BB /* Stats.swift */,
 				EEEFE0E429353925007730BB /* StatsList.swift */,
-				EEEFE0F229354C31007730BB /* LocationArea.swift */,
 				EEEFE0F929364DDC007730BB /* AudioFile.swift */,
 			);
 			path = Modals;
@@ -231,7 +228,6 @@
 				EEEFE0FA29364DDC007730BB /* AudioFile.swift in Sources */,
 				EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */,
 				EEEFE0E1293532DB007730BB /* Types.swift in Sources */,
-				EEEFE0F329354C31007730BB /* LocationArea.swift in Sources */,
 				EE8ABBB429820FA8006212E3 /* ApiBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

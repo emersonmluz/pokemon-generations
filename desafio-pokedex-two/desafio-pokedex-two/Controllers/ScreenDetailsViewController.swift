@@ -19,7 +19,6 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsStackView: UIStackView!
     @IBOutlet weak var techLabel: UILabel!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var contornoView: UIView!
     @IBOutlet weak var progressBar: UIProgressView!
     
@@ -27,16 +26,11 @@ class ScreenDetailsViewController: UIViewController {
     var abilities: [Abilities]?
     var type: [Types]?
     var stats: [Stats]?
-    var encounters: [LocationArea]?
     var apiBrain = ApiBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         apiBrain.delegate = self
-        
-        containerView.alpha = 0.5
-        loading.isHidden = false
-        self.containerView.isUserInteractionEnabled = false
         
         contornoView.layer.cornerRadius = 150
         
@@ -45,121 +39,16 @@ class ScreenDetailsViewController: UIViewController {
         
         statsView.layer.cornerRadius = 10
         statsStackView.layer.cornerRadius = 10
+        requestApi()
         
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/", type: AbilitiesList.self)
-        loadType()
-        loadStats()
-        loadLocationArea()
         
         // Do any additional setup after loading the view.
     }
     
-
-    
-    func loadType () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon-form/\(self.pokemon!.id)/")
-        
-        guard url != nil else {return}
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard data != nil, error == nil else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let typeList = try decoder.decode(TypeList.self, from: data!)
-                
-                DispatchQueue.main.async {
-                    self.type = typeList.types
-                    self.pokemonTypeLabel.text = self.type![0].type["name"]!
-                    if self.type!.count
-                        > 1 {
-                        self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
-                    }
-                    self.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
-                    self.progressBar.progressTintColor = UIColor(named: (self.type?[0].type["name"]!)!)
-                    
-                    self.containerView.alpha = 1
-                    self.loading.isHidden = true
-                    self.containerView.isUserInteractionEnabled = true
-                }
-                
-            } catch let error {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-
-    
-    
-    func loadStats () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/")
-        
-        guard url != nil else {return}
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard data != nil, error == nil else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let statFile = try decoder.decode(StatsList.self, from: data!)
-                
-                DispatchQueue.main.async {
-                    self.stats = statFile.stats
-                    self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
-                    self.statsValuesLabel[0].text = String(self.stats?[1].baseStat ?? 0)
-                    self.statsValuesLabel[1].text = String(self.stats?[2].baseStat ?? 0)
-                    self.statsValuesLabel[2].text = String(self.stats?[3].baseStat ?? 0)
-                    self.statsValuesLabel[3].text = String(self.stats?[4].baseStat ?? 0)
-                    self.statsValuesLabel[4].text = String(self.stats?[5].baseStat ?? 0)
-                }
-                
-            } catch let error {
-                print(error)
-            }
-        }
-        task.resume()
-    }
-    
-    func loadLocationArea () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/encounters")
-        
-        guard url != nil else {return}
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard data != nil, error == nil else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let area = try decoder.decode([LocationArea].self, from: data!)
-
-                DispatchQueue.main.async {
-                    self.encounters = area
-                }
-                
-            } catch let error {
-                print(error)
-            }
-        }
-        task.resume()
+    func requestApi() {
+        apiBrain.request(url: pokemon!.habilityURL, type: AbilitiesList.self)
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon-form/\(self.pokemon!.id)/", type: TypeList.self)
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/", type: StatsList.self)
     }
 }
 
@@ -199,7 +88,25 @@ extension ScreenDetailsViewController: RequestDealings {
             }
         }
         
+        if let type = data as? TypeList {
+            self.type = type.types
+            self.pokemonTypeLabel.text = self.type![0].type["name"]!
+            if self.type!.count
+                > 1 {
+                self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
+            }
+            self.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
+            self.progressBar.progressTintColor = UIColor(named: (self.type?[0].type["name"]!)!)
+        }
+        
+        if let stats = data as? StatsList {
+            self.stats = stats.stats
+            self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
+            self.statsValuesLabel[0].text = String(self.stats?[1].baseStat ?? 0)
+            self.statsValuesLabel[1].text = String(self.stats?[2].baseStat ?? 0)
+            self.statsValuesLabel[2].text = String(self.stats?[3].baseStat ?? 0)
+            self.statsValuesLabel[3].text = String(self.stats?[4].baseStat ?? 0)
+            self.statsValuesLabel[4].text = String(self.stats?[5].baseStat ?? 0)
+        }
     }
-    
-    
 }

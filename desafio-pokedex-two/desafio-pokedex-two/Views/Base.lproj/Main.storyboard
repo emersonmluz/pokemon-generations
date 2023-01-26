@@ -211,7 +211,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pokémon Generations" id="7R0-Qs-MyP">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Yz7-9N-oJS"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Yz7-9N-oJS">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="generationsPopUpButton" destination="Vz5-Z4-Cx3" id="7Qw-Iy-csx"/>
@@ -294,13 +296,13 @@
                                                         <rect key="frame" x="0.0" y="20.5" width="260" height="21"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFP-1G-h0J">
-                                                                <rect key="frame" x="10" y="-1" width="170" height="22.5"/>
+                                                                <rect key="frame" x="10" y="-0.5" width="170" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQ2-QA-mGP">
-                                                                <rect key="frame" x="190" y="-1" width="60" height="22.5"/>
+                                                                <rect key="frame" x="190" y="-0.5" width="60" height="22.5"/>
                                                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -503,17 +505,11 @@
                                             <constraint firstAttribute="width" secondItem="xzD-fH-EaP" secondAttribute="height" multiplier="1:1" id="eN0-es-acw"/>
                                         </constraints>
                                     </imageView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LYE-HM-nI5">
-                                        <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
-                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="70" id="6Zi-Zu-Lb9"/>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="115" id="6s7-G8-mWp"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="215" id="9VJ-E3-XVq"/>
-                                    <constraint firstItem="LYE-HM-nI5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="DHc-Fn-VoK"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="40" id="F3f-pU-WTi"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="H1v-tb-OgH"/>
                                     <constraint firstAttribute="bottom" secondItem="Edf-Jq-aih" secondAttribute="bottom" constant="20" id="OgG-MG-iXR"/>
@@ -521,7 +517,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Edf-Jq-aih" secondAttribute="trailing" constant="20" id="TdC-lJ-exM"/>
                                     <constraint firstItem="Edf-Jq-aih" firstAttribute="top" secondItem="xzD-fH-EaP" secondAttribute="bottom" constant="-100" id="jnL-2H-lmS"/>
                                     <constraint firstItem="Edf-Jq-aih" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="20" id="ki1-Do-30L"/>
-                                    <constraint firstItem="LYE-HM-nI5" firstAttribute="centerY" secondItem="nJd-hQ-B7U" secondAttribute="centerY" id="rcW-Cq-Ly9"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -534,12 +529,15 @@
                             <constraint firstItem="nJd-hQ-B7U" firstAttribute="leading" secondItem="OBc-W0-icU" secondAttribute="leading" id="qWv-iM-Nsf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokémon Status" id="iHj-Ph-EEb"/>
+                    <navigationItem key="navigationItem" title="Pokémon Status" id="iHj-Ph-EEb">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="87W-pr-fep">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="nJd-hQ-B7U" id="LUv-zj-XNE"/>
                         <outlet property="contornoView" destination="Jz4-JJ-gn5" id="OZ9-GT-4co"/>
                         <outlet property="hpLabel" destination="9oy-34-Izp" id="XgC-Wd-Uyk"/>
-                        <outlet property="loading" destination="LYE-HM-nI5" id="qwJ-wL-OML"/>
                         <outlet property="pokemonImageView" destination="xzD-fH-EaP" id="yvh-bP-pL8"/>
                         <outlet property="pokemonName" destination="Nps-Hi-ciu" id="W3o-x3-dYW"/>
                         <outlet property="pokemonTypeLabel" destination="UVx-iy-YsY" id="Z7X-sY-36r"/>
@@ -571,6 +569,9 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9BR-qh-Qri">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JoH-2B-ksJ"/>
                     </connections>
