@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var generationsPopUpButton: UIButton!
     
+    var apiBrain = ApiBrain()
     var pokemon: [Pokemon] = []
     var arrayOfSearch: [Pokemon] = []
     var numberOfNewPokemonsInGenerationCurrent: Int = 151
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        apiBrain.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
         
@@ -33,7 +35,8 @@ class HomeViewController: UIViewController {
         sound?.play()
         
         startLoadingScreen()
-        loadPokemonList()
+
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
         
         generationsPopUpButton.layer.cornerRadius = 6
         setPopUpButton()
@@ -86,7 +89,7 @@ class HomeViewController: UIViewController {
             self.dismissKeyboard()
             self.arrayOfSearch = []
             self.startLoadingScreen()
-            self.loadPokemonList()
+            self.apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(self.numberOfOldPokemonsInGenerationPrevious)&limit=\(self.numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
             
         }
         
@@ -144,36 +147,36 @@ class HomeViewController: UIViewController {
         tableView.isUserInteractionEnabled = true
     }
     
-    func loadPokemonList () {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)")
-        
-        guard url != nil else {return}
-        
-        var request = URLRequest(url: url!)
-        request.httpMethod = "GET"
-        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard data != nil, error == nil else {return}
-            
-            do {
-                let decoder = JSONDecoder()
-                let pokemonList = try decoder.decode(PokemonList.self, from: data!)
-                
-                DispatchQueue.main.async {
-                    self.pokemon = pokemonList.result
-                    self.tableView.reloadData()
-                    self.stopLoadingScreen()
-                }
-                
-            } catch let error {
-                print(error)
-            }
-        }
-        task.resume()
-    }
+//    func loadPokemonList () {
+//        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)")
+//        
+//        guard url != nil else {return}
+//        
+//        var request = URLRequest(url: url!)
+//        request.httpMethod = "GET"
+//        request.addValue("aplication/json", forHTTPHeaderField: "Content-Type")
+//        
+//        let session = URLSession.shared
+//        
+//        let task = session.dataTask(with: request) { data, response, error in
+//            guard data != nil, error == nil else {return}
+//            
+//            do {
+//                let decoder = JSONDecoder()
+//                let pokemonList = try decoder.decode(PokemonList.self, from: data!)
+//                
+//                DispatchQueue.main.async {
+//                    self.pokemon = pokemonList.result
+//                    self.tableView.reloadData()
+//                    self.stopLoadingScreen()
+//                }
+//                
+//            } catch let error {
+//                print(error)
+//            }
+//        }
+//        task.resume()
+//    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -238,4 +241,14 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension HomeViewController: RequestDealings {
+    func decoderSuccess<T>(data: T) {
+        if let pokemon = data as? PokemonList {
+            self.pokemon = pokemon.result
+            self.tableView.reloadData()
+            self.stopLoadingScreen()
+        }
+    }
 }

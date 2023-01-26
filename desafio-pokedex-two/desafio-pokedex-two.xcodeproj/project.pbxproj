@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE8ABBB429820FA8006212E3 /* ApiBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8ABBB329820FA8006212E3 /* ApiBrain.swift */; };
 		EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F731293121760036DE1C /* AppDelegate.swift */; };
 		EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F733293121760036DE1C /* SceneDelegate.swift */; };
 		EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F735293121760036DE1C /* HomeViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE8ABBB329820FA8006212E3 /* ApiBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBrain.swift; sourceTree = "<group>"; };
 		EEA1F72E293121760036DE1C /* desafio-pokedex-two.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "desafio-pokedex-two.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA1F731293121760036DE1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA1F733293121760036DE1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		EEA1F747293121AE0036DE1C /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				EE8ABBB329820FA8006212E3 /* ApiBrain.swift */,
 				EEA1F748293121D60036DE1C /* PokemonList.swift */,
 				EEA1F74A29312A9C0036DE1C /* Pokemon.swift */,
 				EEEFE0D02934EFE7007730BB /* Generations.swift */,
@@ -229,6 +232,7 @@
 				EEEFE0DB293522CC007730BB /* AbilitiesList.swift in Sources */,
 				EEEFE0E1293532DB007730BB /* Types.swift in Sources */,
 				EEEFE0F329354C31007730BB /* LocationArea.swift in Sources */,
+				EE8ABBB429820FA8006212E3 /* ApiBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
