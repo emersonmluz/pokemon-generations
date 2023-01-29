@@ -17,8 +17,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var generationsPopUpButton: UIButton!
     
     var apiBrain = ApiBrain()
-    var pokemon: [Pokemon] = []
-    var arrayOfSearch: [Pokemon] = []
+    var pokemonList: [Pokemon] = []
+    var homeModel = HomeViewModel()
     var numberOfNewPokemonsInGenerationCurrent: Int = 151
     var numberOfOldPokemonsInGenerationPrevious: Int = 0
     var sound: AVAudioPlayer?
@@ -92,7 +92,7 @@ class HomeViewController: UIViewController {
                 self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
           
-            self.arrayOfSearch = []
+            self.homeModel.arrayOfSearch = []
             self.startLoadingScreen()
             self.apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(self.numberOfOldPokemonsInGenerationPrevious)&limit=\(self.numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
             
@@ -112,27 +112,19 @@ class HomeViewController: UIViewController {
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
         startLoadingScreen()
-        search()
+        homeModel.search(name: searchTextField.text ?? "", searchIn: pokemonList)
         tableView.reloadData()
         stopLoadingScreen()
     }
     
-    private func search () {
-        let searchName: String = searchTextField.text ?? ""
-        arrayOfSearch = []
-        
-        for pokemon in pokemon {
-            if pokemon.name.lowercased().contains(searchName.lowercased()) {
-                arrayOfSearch.append(pokemon)
-            }
-        }
-    }
+    
     
     @objc func imageTapped(sender: MyTapGesture) {
+        view.endEditing(true)
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
            
-            detailsScreen.pokemon = pokemon[sender.id! - numberOfOldPokemonsInGenerationPrevious]
+            detailsScreen.pokemon = pokemonList[sender.id! - numberOfOldPokemonsInGenerationPrevious]
             
             navigationController?.pushViewController(detailsScreen, animated: true)
         }
@@ -156,13 +148,13 @@ extension HomeViewController: UITableViewDataSource {
         
         var numberOfRows: Double = 0
         
-        if arrayOfSearch.count > 0 {
-            numberOfRows = Double(arrayOfSearch.count) / 2
+        if homeModel.arrayOfSearch.count > 0 {
+            numberOfRows = Double(homeModel.arrayOfSearch.count) / 2
             nothingResultLabel.alpha = 0
         } else if searchTextField.text != "" {
             nothingResultLabel.alpha = 1
         } else {
-            numberOfRows = Double(pokemon.count) / 2
+            numberOfRows = Double(pokemonList.count) / 2
             nothingResultLabel.alpha = 0
         }
         
@@ -175,10 +167,10 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CellSetup
         
-        if arrayOfSearch.count > 0 {
-            cell.loadCell(pokemonOne: arrayOfSearch[indexPath.row], pokemonTwo: arrayOfSearch[arrayOfSearch.count / 2 + indexPath.row])
+        if homeModel.arrayOfSearch.count > 0 {
+            cell.loadCell(pokemonOne: homeModel.arrayOfSearch[indexPath.row], pokemonTwo: homeModel.arrayOfSearch[homeModel.arrayOfSearch.count / 2 + indexPath.row])
         } else {
-            cell.loadCell(pokemonOne: pokemon[indexPath.row], pokemonTwo: pokemon[(pokemon.count / 2) + indexPath.row])
+            cell.loadCell(pokemonOne: pokemonList[indexPath.row], pokemonTwo: pokemonList[(pokemonList.count / 2) + indexPath.row])
         }
         
         let tapImageLeft = MyTapGesture(target: self, action: #selector(imageTapped))
@@ -205,10 +197,9 @@ extension HomeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         startLoadingScreen()
-        search()
+        homeModel.search(name: searchTextField.text ?? "", searchIn: pokemonList)
         tableView.reloadData()
         stopLoadingScreen()
-        
         return true
     }
     
@@ -217,7 +208,7 @@ extension HomeViewController: UITextFieldDelegate {
 extension HomeViewController: RequestDealings {
     func decoderSuccess<T>(data: T) {
         if let pokemon = data as? PokemonList {
-            self.pokemon = pokemon.result
+            self.pokemonList = pokemon.result
             self.tableView.reloadData()
             self.stopLoadingScreen()
         }
