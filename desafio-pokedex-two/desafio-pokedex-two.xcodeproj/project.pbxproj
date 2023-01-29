@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE8ABBB429820FA8006212E3 /* ApiBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8ABBB329820FA8006212E3 /* ApiBrain.swift */; };
 		EE8FACD22986B5A200A63832 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FACD12986B5A200A63832 /* HomeViewModel.swift */; };
+		EE8FACD62986FB4200A63832 /* ScreenDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8FACD52986FB4200A63832 /* ScreenDetailsViewModel.swift */; };
 		EEA1F732293121760036DE1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F731293121760036DE1C /* AppDelegate.swift */; };
 		EEA1F734293121760036DE1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F733293121760036DE1C /* SceneDelegate.swift */; };
 		EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1F735293121760036DE1C /* HomeViewController.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		EE8ABBB329820FA8006212E3 /* ApiBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiBrain.swift; sourceTree = "<group>"; };
 		EE8FACD12986B5A200A63832 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EE8FACD52986FB4200A63832 /* ScreenDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDetailsViewModel.swift; sourceTree = "<group>"; };
 		EEA1F72E293121760036DE1C /* desafio-pokedex-two.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "desafio-pokedex-two.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA1F731293121760036DE1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA1F733293121760036DE1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				EEA1F735293121760036DE1C /* HomeViewController.swift */,
 				EE8FACD12986B5A200A63832 /* HomeViewModel.swift */,
 				EEEFE0CA29344BAB007730BB /* ScreenDetailsViewController.swift */,
+				EE8FACD52986FB4200A63832 /* ScreenDetailsViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				EEA1F74B29312A9C0036DE1C /* Pokemon.swift in Sources */,
 				EEEFE0E32935365F007730BB /* Stats.swift in Sources */,
 				EEA1F74F293148DE0036DE1C /* CellSetup.swift in Sources */,
+				EE8FACD62986FB4200A63832 /* ScreenDetailsViewModel.swift in Sources */,
 				EEEFE0CB29344BAB007730BB /* ScreenDetailsViewController.swift in Sources */,
 				EEEFE0D12934EFE7007730BB /* Generations.swift in Sources */,
 				EEA1F736293121760036DE1C /* HomeViewController.swift in Sources */,

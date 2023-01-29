@@ -504,18 +504,26 @@
                                             <constraint firstAttribute="width" secondItem="xzD-fH-EaP" secondAttribute="height" multiplier="1:1" id="eN0-es-acw"/>
                                         </constraints>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gN2-Dz-ukl">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="70" id="6Zi-Zu-Lb9"/>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="115" id="6s7-G8-mWp"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" constant="215" id="9VJ-E3-XVq"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="40" id="F3f-pU-WTi"/>
+                                    <constraint firstAttribute="trailing" secondItem="gN2-Dz-ukl" secondAttribute="trailing" id="GMx-RI-aoA"/>
                                     <constraint firstItem="Jz4-JJ-gn5" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="H1v-tb-OgH"/>
                                     <constraint firstAttribute="bottom" secondItem="Edf-Jq-aih" secondAttribute="bottom" constant="20" id="OgG-MG-iXR"/>
                                     <constraint firstItem="xzD-fH-EaP" firstAttribute="centerX" secondItem="nJd-hQ-B7U" secondAttribute="centerX" id="P8f-ho-pu2"/>
                                     <constraint firstAttribute="trailing" secondItem="Edf-Jq-aih" secondAttribute="trailing" constant="20" id="TdC-lJ-exM"/>
+                                    <constraint firstItem="gN2-Dz-ukl" firstAttribute="top" secondItem="nJd-hQ-B7U" secondAttribute="top" id="er1-1j-bWR"/>
+                                    <constraint firstAttribute="bottom" secondItem="gN2-Dz-ukl" secondAttribute="bottom" id="fxL-4I-R2L"/>
                                     <constraint firstItem="Edf-Jq-aih" firstAttribute="top" secondItem="xzD-fH-EaP" secondAttribute="bottom" constant="-100" id="jnL-2H-lmS"/>
                                     <constraint firstItem="Edf-Jq-aih" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" constant="20" id="ki1-Do-30L"/>
+                                    <constraint firstItem="gN2-Dz-ukl" firstAttribute="leading" secondItem="nJd-hQ-B7U" secondAttribute="leading" id="zJ6-Eq-zNB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -537,6 +545,7 @@
                         <outlet property="containerView" destination="nJd-hQ-B7U" id="LUv-zj-XNE"/>
                         <outlet property="contornoView" destination="Jz4-JJ-gn5" id="OZ9-GT-4co"/>
                         <outlet property="hpLabel" destination="9oy-34-Izp" id="XgC-Wd-Uyk"/>
+                        <outlet property="loading" destination="gN2-Dz-ukl" id="5O5-F8-48g"/>
                         <outlet property="pokemonImageView" destination="xzD-fH-EaP" id="yvh-bP-pL8"/>
                         <outlet property="pokemonName" destination="Nps-Hi-ciu" id="W3o-x3-dYW"/>
                         <outlet property="pokemonTypeLabel" destination="UVx-iy-YsY" id="Z7X-sY-36r"/>

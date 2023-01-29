@@ -21,65 +21,57 @@ class ScreenDetailsViewController: UIViewController {
     @IBOutlet weak var techLabel: UILabel!
     @IBOutlet weak var contornoView: UIView!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
+    var screenDetailsModel = ScreenDetailsViewModel()
     var pokemon: Pokemon?
-    var abilities: [Abilities]?
-    var type: [Types]?
-    var stats: [Stats]?
-    var apiBrain = ApiBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiBrain.delegate = self
-        
-        contornoView.layer.cornerRadius = 150
-        
-        pokemonImageView.loadImage(URLAddress: pokemon!.imageURL)
-        pokemonName.text = pokemon?.name
-        
-        statsView.layer.cornerRadius = 10
-        statsStackView.layer.cornerRadius = 10
-        requestApi()
-        
-        
-        // Do any additional setup after loading the view.
+        configUI()
     }
     
-    func requestApi() {
-        apiBrain.request(url: pokemon!.habilityURL, type: AbilitiesList.self)
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon-form/\(self.pokemon!.id)/", type: TypeList.self)
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon/\(self.pokemon!.id)/", type: StatsList.self)
-    }
-}
-
-extension UIImageView {
-    func loadImage(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
+    private func configUI() {
+        startLoadingScreen()
+        screenDetailsModel.apiBrain.delegate = self
+        configComponents()
+        loadPokemonInfo()
+        if let pokemon = pokemon {
+            screenDetailsModel.apiRequest(pokemon: pokemon)
         }
-        
-        DispatchQueue.global().async {
-            let imageData = try? Data(contentsOf: url)
-            
-            DispatchQueue.main.async { [weak self] in
-                if let imageData = imageData {
-                    if let loadedImage = UIImage(data: imageData) {
-                            self?.image = loadedImage
-                    }
-                }
-            }
-        }
-
     }
+    
+    private func configComponents() {
+        contornoView.layer.cornerRadius = 150
+        statsView.layer.cornerRadius = 10
+        statsStackView.layer.cornerRadius = 10
+    }
+    
+    private func loadPokemonInfo() {
+        guard let pokemon = pokemon else {return}
+        pokemonImageView.loadFrom(URLAddress: pokemon.imageURL)
+        pokemonName.text = pokemon.name
+    }
+    
+    private func startLoadingScreen() {
+        loading.isHidden = false
+        loading.startAnimating()
+    }
+    
+    private func stopLoadingScreen() {
+        loading.stopAnimating()
+        loading.isHidden = true
+    }
+    
 }
 
 extension ScreenDetailsViewController: RequestDealings {
     func decoderSuccess<T>(data: T) {
         if let abilityList = data as? AbilitiesList {
-            self.abilities = abilityList.abilities
-            self.pokemonTechLabel[0].text = self.abilities![0].ability["name"]
-            if self.abilities!.count > 1 {
-                self.pokemonTechLabel[1].text = self.abilities![1].ability["name"]
+            screenDetailsModel.abilities = abilityList.abilities
+            self.pokemonTechLabel[0].text = screenDetailsModel.abilities![0].ability["name"]
+            if screenDetailsModel.abilities!.count > 1 {
+                self.pokemonTechLabel[1].text = screenDetailsModel.abilities![1].ability["name"]
                 self.pokemonTechLabel[1].isHidden = false
                 self.techLabel.isHidden = false
             } else {
@@ -89,24 +81,25 @@ extension ScreenDetailsViewController: RequestDealings {
         }
         
         if let type = data as? TypeList {
-            self.type = type.types
-            self.pokemonTypeLabel.text = self.type![0].type["name"]!
-            if self.type!.count
+            screenDetailsModel.type = type.types
+            self.pokemonTypeLabel.text = screenDetailsModel.type![0].type["name"]!
+            if screenDetailsModel.type?.count ?? 0
                 > 1 {
-                self.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
+                self.pokemonTypeLabel.text? += " / " + (screenDetailsModel.type?[1].type["name"]!)!
             }
-            self.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
-            self.progressBar.progressTintColor = UIColor(named: (self.type?[0].type["name"]!)!)
+            self.containerView.backgroundColor = UIColor(named: (screenDetailsModel.type?[0].type["name"]!)!)
+            self.progressBar.progressTintColor = UIColor(named: (screenDetailsModel.type?[0].type["name"]!)!)
         }
         
         if let stats = data as? StatsList {
-            self.stats = stats.stats
-            self.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
-            self.statsValuesLabel[0].text = String(self.stats?[1].baseStat ?? 0)
-            self.statsValuesLabel[1].text = String(self.stats?[2].baseStat ?? 0)
-            self.statsValuesLabel[2].text = String(self.stats?[3].baseStat ?? 0)
-            self.statsValuesLabel[3].text = String(self.stats?[4].baseStat ?? 0)
-            self.statsValuesLabel[4].text = String(self.stats?[5].baseStat ?? 0)
+            screenDetailsModel.stats = stats.stats
+            self.hpLabel.text = "HP " + String(screenDetailsModel.stats?[0].baseStat ?? 0) + " / " + String(screenDetailsModel.stats?[0].baseStat ?? 0)
+            self.statsValuesLabel[0].text = String(screenDetailsModel.stats?[1].baseStat ?? 0)
+            self.statsValuesLabel[1].text = String(screenDetailsModel.stats?[2].baseStat ?? 0)
+            self.statsValuesLabel[2].text = String(screenDetailsModel.stats?[3].baseStat ?? 0)
+            self.statsValuesLabel[3].text = String(screenDetailsModel.stats?[4].baseStat ?? 0)
+            self.statsValuesLabel[4].text = String(screenDetailsModel.stats?[5].baseStat ?? 0)
         }
+        stopLoadingScreen()
     }
 }

@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     private func configUI() {
         startLoadingScreen()
         configComponents()
-        //configSound()
+        configSound()
         delegateAndSourcce()
         hideKeyboard()
         homeModel.apiRequest()
@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
         stopLoadingScreen()
     }
     
-    @objc func imageTapped(sender: MyTapGesture) {
+    @objc private func imageTapped(sender: MyTapGesture) {
         view.endEditing(true)
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
@@ -89,12 +89,12 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func startLoadingScreen() {
+    private func startLoadingScreen() {
         loadingActivityIndicator.isHidden = false
         loadingActivityIndicator.startAnimating()
     }
     
-    func stopLoadingScreen() {
+    private func stopLoadingScreen() {
         loadingActivityIndicator.stopAnimating()
         loadingActivityIndicator.isHidden = true
     }
@@ -102,7 +102,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         var numberOfRows: Double = 0
         
         if homeModel.arrayOfSearch.count > 0 {
@@ -150,7 +149,6 @@ class MyTapGesture: UITapGestureRecognizer {
 }
 
 extension HomeViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         startLoadingScreen()
         homeModel.search(name: searchTextField.text ?? "")
@@ -158,7 +156,6 @@ extension HomeViewController: UITextFieldDelegate {
         stopLoadingScreen()
         return true
     }
-    
 }
 
 extension HomeViewController: RequestDealings {
@@ -168,5 +165,26 @@ extension HomeViewController: RequestDealings {
             self.tableView.reloadData()
             self.stopLoadingScreen()
         }
+    }
+}
+
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let imageData = try? Data(contentsOf: url)
+            
+            DispatchQueue.main.async { [weak self] in
+                if let imageData = imageData {
+                    if let loadedImage = UIImage(data: imageData) {
+                            self?.image = loadedImage
+                    }
+                }
+            }
+        }
+
     }
 }
