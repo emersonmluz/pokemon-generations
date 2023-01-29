@@ -33,7 +33,8 @@ class ScreenDetailsViewController: UIViewController {
     
     private func configUI() {
         startLoadingScreen()
-        screenDetailsModel.apiBrain.delegate = self
+        screenDetailsModel.controller = self
+        screenDetailsModel.apiBrain.delegate = screenDetailsModel
         configComponents()
         loadPokemonInfo()
         if let pokemon = pokemon {
@@ -53,53 +54,14 @@ class ScreenDetailsViewController: UIViewController {
         pokemonName.text = pokemon.name
     }
     
-    private func startLoadingScreen() {
+    internal func startLoadingScreen() {
         loading.isHidden = false
         loading.startAnimating()
     }
     
-    private func stopLoadingScreen() {
+    internal func stopLoadingScreen() {
         loading.stopAnimating()
         loading.isHidden = true
     }
     
-}
-
-extension ScreenDetailsViewController: RequestDealings {
-    func decoderSuccess<T>(data: T) {
-        if let abilityList = data as? AbilitiesList {
-            screenDetailsModel.abilities = abilityList.abilities
-            self.pokemonTechLabel[0].text = screenDetailsModel.abilities![0].ability["name"]
-            if screenDetailsModel.abilities!.count > 1 {
-                self.pokemonTechLabel[1].text = screenDetailsModel.abilities![1].ability["name"]
-                self.pokemonTechLabel[1].isHidden = false
-                self.techLabel.isHidden = false
-            } else {
-                self.pokemonTechLabel[1].isHidden = true
-                self.techLabel.isHidden = true
-            }
-        }
-        
-        if let type = data as? TypeList {
-            screenDetailsModel.type = type.types
-            self.pokemonTypeLabel.text = screenDetailsModel.type![0].type["name"]!
-            if screenDetailsModel.type?.count ?? 0
-                > 1 {
-                self.pokemonTypeLabel.text? += " / " + (screenDetailsModel.type?[1].type["name"]!)!
-            }
-            self.containerView.backgroundColor = UIColor(named: (screenDetailsModel.type?[0].type["name"]!)!)
-            self.progressBar.progressTintColor = UIColor(named: (screenDetailsModel.type?[0].type["name"]!)!)
-        }
-        
-        if let stats = data as? StatsList {
-            screenDetailsModel.stats = stats.stats
-            self.hpLabel.text = "HP " + String(screenDetailsModel.stats?[0].baseStat ?? 0) + " / " + String(screenDetailsModel.stats?[0].baseStat ?? 0)
-            self.statsValuesLabel[0].text = String(screenDetailsModel.stats?[1].baseStat ?? 0)
-            self.statsValuesLabel[1].text = String(screenDetailsModel.stats?[2].baseStat ?? 0)
-            self.statsValuesLabel[2].text = String(screenDetailsModel.stats?[3].baseStat ?? 0)
-            self.statsValuesLabel[3].text = String(screenDetailsModel.stats?[4].baseStat ?? 0)
-            self.statsValuesLabel[4].text = String(screenDetailsModel.stats?[5].baseStat ?? 0)
-        }
-        stopLoadingScreen()
-    }
 }

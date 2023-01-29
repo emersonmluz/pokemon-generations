@@ -79,7 +79,7 @@ class HomeViewController: UIViewController {
         stopLoadingScreen()
     }
     
-    @objc private func imageTapped(sender: MyTapGesture) {
+    @objc func imageTapped(sender: MyTapGesture) {
         view.endEditing(true)
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
@@ -103,44 +103,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfRows: Double = 0
-        
-        if homeModel.arrayOfSearch.count > 0 {
-            numberOfRows = Double(homeModel.arrayOfSearch.count) / 2
-            nothingResultLabel.alpha = 0
-        } else if searchTextField.text != "" {
-            nothingResultLabel.alpha = 1
-        } else {
-            numberOfRows = Double(homeModel.pokemonList.count) / 2
-            nothingResultLabel.alpha = 0
-        }
-        
-        searchTextField.text = ""
-        numberOfRows = ceil(numberOfRows)
-        
-        return Int(numberOfRows)
+        return homeModel.numberOfRow()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CellSetup
-        
-        if homeModel.arrayOfSearch.count > 0 {
-            cell.loadCell(pokemonOne: homeModel.arrayOfSearch[indexPath.row], pokemonTwo: homeModel.arrayOfSearch[homeModel.arrayOfSearch.count / 2 + indexPath.row])
-        } else {
-            cell.loadCell(pokemonOne: homeModel.pokemonList[indexPath.row], pokemonTwo: homeModel.pokemonList[(homeModel.pokemonList.count / 2) + indexPath.row])
-        }
-        
-        let tapImageLeft = MyTapGesture(target: self, action: #selector(imageTapped))
-        tapImageLeft.id = Int(cell.idLeft.text!)! - 1
-        cell.pokemonImageLeft.addGestureRecognizer(tapImageLeft)
-        cell.pokemonImageLeft.isUserInteractionEnabled = true
-        
-        let tapImageRight = MyTapGesture(target: self, action: #selector(imageTapped))
-        tapImageRight.id = Int(cell.idRight.text!)! - 1
-        cell.pokemonImageRight.addGestureRecognizer(tapImageRight)
-        cell.pokemonImageRight.isUserInteractionEnabled = true
-        
-        return cell
+        return homeModel.cellRows(row: indexPath.row)
     }
     
 }
@@ -159,23 +126,4 @@ extension HomeViewController: UITextFieldDelegate {
     }
 }
 
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
-        }
-        
-        DispatchQueue.global().async {
-            let imageData = try? Data(contentsOf: url)
-            
-            DispatchQueue.main.async { [weak self] in
-                if let imageData = imageData {
-                    if let loadedImage = UIImage(data: imageData) {
-                            self?.image = loadedImage
-                    }
-                }
-            }
-        }
 
-    }
-}

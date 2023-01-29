@@ -16,7 +16,7 @@ class HomeViewModel: UIViewController {
     var numberOfNewPokemonsInGenerationCurrent: Int = 151
     var numberOfOldPokemonsInGenerationPrevious: Int = 0
     var optionClosure: ((UIAction) -> Void)?
-    var controller: HomeViewController?
+    weak var controller: HomeViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +83,47 @@ class HomeViewModel: UIViewController {
         }
         return audioFileResult!
     }
+    
+    internal func numberOfRow() -> Int {
+        var numberOfRows: Double = 0
+        
+        if arrayOfSearch.count > 0 {
+            numberOfRows = Double(arrayOfSearch.count) / 2
+            controller?.nothingResultLabel.alpha = 0
+        } else if controller?.searchTextField.text != "" {
+            controller?.nothingResultLabel.alpha = 1
+        } else {
+            numberOfRows = Double(pokemonList.count) / 2
+            controller?.nothingResultLabel.alpha = 0
+        }
+        
+        controller?.searchTextField.text = ""
+        numberOfRows = ceil(numberOfRows)
+        
+        return Int(numberOfRows)
+    }
+    
+    internal func cellRows(row: Int) -> UITableViewCell {
+        let cell = controller?.tableView.dequeueReusableCell(withIdentifier: "cell") as! CellSetup
+        
+        if arrayOfSearch.count > 0 {
+            cell.loadCell(pokemonOne: arrayOfSearch[row], pokemonTwo: arrayOfSearch[arrayOfSearch.count / 2 + row])
+        } else {
+            cell.loadCell(pokemonOne: pokemonList[row], pokemonTwo: pokemonList[(pokemonList.count / 2) + row])
+        }
+        
+        let tapImageLeft = MyTapGesture(target: controller, action: #selector(controller?.imageTapped))
+        tapImageLeft.id = Int(cell.idLeft.text!)! - 1
+        cell.pokemonImageLeft.addGestureRecognizer(tapImageLeft)
+        cell.pokemonImageLeft.isUserInteractionEnabled = true
+        
+        let tapImageRight = MyTapGesture(target: controller, action: #selector(controller?.imageTapped))
+        tapImageRight.id = Int(cell.idRight.text!)! - 1
+        cell.pokemonImageRight.addGestureRecognizer(tapImageRight)
+        cell.pokemonImageRight.isUserInteractionEnabled = true
+        
+        return cell
+    }
 }
 
 extension HomeViewModel: RequestDealings {
@@ -104,4 +145,25 @@ enum Generations: String {
     case generationVI = "Geração VI"
     case generationVII = "Geração VII"
     case generationVIII = "Geração VIII"
+}
+
+extension UIImageView {
+    func loadFrom(URLAddress: String) {
+        guard let url = URL(string: URLAddress) else {
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let imageData = try? Data(contentsOf: url)
+            
+            DispatchQueue.main.async { [weak self] in
+                if let imageData = imageData {
+                    if let loadedImage = UIImage(data: imageData) {
+                            self?.image = loadedImage
+                    }
+                }
+            }
+        }
+
+    }
 }
