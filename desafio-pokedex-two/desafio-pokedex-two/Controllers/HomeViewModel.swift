@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFAudio
 
 class HomeViewModel: UIViewController {
 
@@ -69,4 +70,27 @@ class HomeViewModel: UIViewController {
             self.apiRequest()
         }
     }
+    
+    internal func importAudioFile () -> AVAudioPlayer {
+        var audioFileResult: AVAudioPlayer?
+        do {
+            let path = Bundle.main.path(forResource: "pokemonTheme", ofType: "mp3")
+            let audioFile = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path!))
+            audioFileResult = audioFile
+        } catch {
+            print("Arquivo de áudio não encontrado.")
+        }
+        return audioFileResult!
+    }
+}
+
+enum Generations: String {
+    case generationI = "Geração I"
+    case generationII = "Geração II"
+    case generationIII = "Geração III"
+    case generationIV = "Geração IV"
+    case generationV = "Geração V"
+    case generationVI = "Geração VI"
+    case generationVII = "Geração VII"
+    case generationVIII = "Geração VIII"
 }

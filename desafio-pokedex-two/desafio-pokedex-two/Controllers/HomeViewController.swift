@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configSound() {
-        sound = AudioFile.importAudioFile()
+        sound = homeModel.importAudioFile()
         sound?.numberOfLoops = -1
         sound?.play()
     }
