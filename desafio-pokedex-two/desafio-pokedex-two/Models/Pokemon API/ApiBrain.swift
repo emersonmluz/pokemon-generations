@@ -12,6 +12,7 @@ protocol RequestDealings {
 }
 
 class ApiBrain {
+    
     var delegate: RequestDealings?
     
     func request<Generic: Codable>(url: String, type: Generic.Type) {

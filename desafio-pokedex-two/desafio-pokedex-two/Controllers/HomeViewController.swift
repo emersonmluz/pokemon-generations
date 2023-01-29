@@ -39,7 +39,8 @@ class HomeViewController: UIViewController {
     }
     
     private func delegateAndSourcce() {
-        homeModel.apiBrain.delegate = self
+        homeModel.controller = self
+        homeModel.apiBrain.delegate = homeModel
         tableView.dataSource = self
         searchTextField.delegate = self
     }
@@ -89,12 +90,12 @@ class HomeViewController: UIViewController {
         }
     }
 
-    private func startLoadingScreen() {
+    internal func startLoadingScreen() {
         loadingActivityIndicator.isHidden = false
         loadingActivityIndicator.startAnimating()
     }
     
-    private func stopLoadingScreen() {
+    internal func stopLoadingScreen() {
         loadingActivityIndicator.stopAnimating()
         loadingActivityIndicator.isHidden = true
     }
@@ -155,16 +156,6 @@ extension HomeViewController: UITextFieldDelegate {
         tableView.reloadData()
         stopLoadingScreen()
         return true
-    }
-}
-
-extension HomeViewController: RequestDealings {
-    func decoderSuccess<T>(data: T) {
-        if let pokemon = data as? PokemonList {
-            homeModel.pokemonList = pokemon.result
-            self.tableView.reloadData()
-            self.stopLoadingScreen()
-        }
     }
 }
 

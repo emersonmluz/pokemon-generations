@@ -16,6 +16,7 @@ class HomeViewModel: UIViewController {
     var numberOfNewPokemonsInGenerationCurrent: Int = 151
     var numberOfOldPokemonsInGenerationPrevious: Int = 0
     var optionClosure: ((UIAction) -> Void)?
+    var controller: HomeViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +82,16 @@ class HomeViewModel: UIViewController {
             print("Arquivo de áudio não encontrado.")
         }
         return audioFileResult!
+    }
+}
+
+extension HomeViewModel: RequestDealings {
+    func decoderSuccess<T>(data: T) {
+        if let pokemon = data as? PokemonList {
+            pokemonList = pokemon.result
+            controller?.tableView.reloadData()
+            controller?.stopLoadingScreen()
+        }
     }
 }
 
