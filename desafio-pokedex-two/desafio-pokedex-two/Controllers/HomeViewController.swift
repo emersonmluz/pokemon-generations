@@ -16,10 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var generationsPopUpButton: UIButton!
     
-    var pokemonList: [Pokemon] = []
     var homeModel = HomeViewModel()
-    var numberOfNewPokemonsInGenerationCurrent: Int = 151
-    var numberOfOldPokemonsInGenerationPrevious: Int = 0
     var sound: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -33,7 +30,7 @@ class HomeViewController: UIViewController {
         //configSound()
         delegateAndSourcce()
         hideKeyboard()
-        homeModel.apiRequest(previouGeneration: numberOfOldPokemonsInGenerationPrevious, currentGeneration: numberOfNewPokemonsInGenerationCurrent)
+        homeModel.apiRequest()
     }
     
     private func configComponents() {
@@ -64,36 +61,36 @@ class HomeViewController: UIViewController {
             
             switch action.title {
             case Generations.generationI.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 0
-                self.numberOfNewPokemonsInGenerationCurrent = 151
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 0
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 151
             case Generations.generationII.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 151
-                self.numberOfNewPokemonsInGenerationCurrent = 100
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 151
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 100
             case Generations.generationIII.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 251
-                self.numberOfNewPokemonsInGenerationCurrent = 135
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 251
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 135
             case Generations.generationIV.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 386
-                self.numberOfNewPokemonsInGenerationCurrent = 107
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 386
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 107
             case Generations.generationV.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 493
-                self.numberOfNewPokemonsInGenerationCurrent = 156
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 493
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 156
             case Generations.generationVI.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 649
-                self.numberOfNewPokemonsInGenerationCurrent = 72
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 649
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 72
             case Generations.generationVII.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 721
-                self.numberOfNewPokemonsInGenerationCurrent = 88
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 721
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 88
             case Generations.generationVIII.rawValue:
-                self.numberOfOldPokemonsInGenerationPrevious = 809
-                self.numberOfNewPokemonsInGenerationCurrent = 96
+                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 809
+                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 96
             default:
                 self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
           
             self.homeModel.arrayOfSearch = []
             self.startLoadingScreen()
-            self.homeModel.apiRequest(previouGeneration: self.numberOfOldPokemonsInGenerationPrevious, currentGeneration: self.numberOfNewPokemonsInGenerationCurrent)
+            self.homeModel.apiRequest()
             
         }
         
@@ -111,7 +108,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
         startLoadingScreen()
-        homeModel.search(name: searchTextField.text ?? "", searchIn: pokemonList)
+        homeModel.search(name: searchTextField.text ?? "")
         tableView.reloadData()
         stopLoadingScreen()
     }
@@ -121,7 +118,7 @@ class HomeViewController: UIViewController {
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
            
-            detailsScreen.pokemon = pokemonList[sender.id! - numberOfOldPokemonsInGenerationPrevious]
+            detailsScreen.pokemon = homeModel.pokemonList[sender.id! - homeModel.numberOfOldPokemonsInGenerationPrevious]
             
             navigationController?.pushViewController(detailsScreen, animated: true)
         }
@@ -151,7 +148,7 @@ extension HomeViewController: UITableViewDataSource {
         } else if searchTextField.text != "" {
             nothingResultLabel.alpha = 1
         } else {
-            numberOfRows = Double(pokemonList.count) / 2
+            numberOfRows = Double(homeModel.pokemonList.count) / 2
             nothingResultLabel.alpha = 0
         }
         
@@ -167,7 +164,7 @@ extension HomeViewController: UITableViewDataSource {
         if homeModel.arrayOfSearch.count > 0 {
             cell.loadCell(pokemonOne: homeModel.arrayOfSearch[indexPath.row], pokemonTwo: homeModel.arrayOfSearch[homeModel.arrayOfSearch.count / 2 + indexPath.row])
         } else {
-            cell.loadCell(pokemonOne: pokemonList[indexPath.row], pokemonTwo: pokemonList[(pokemonList.count / 2) + indexPath.row])
+            cell.loadCell(pokemonOne: homeModel.pokemonList[indexPath.row], pokemonTwo: homeModel.pokemonList[(homeModel.pokemonList.count / 2) + indexPath.row])
         }
         
         let tapImageLeft = MyTapGesture(target: self, action: #selector(imageTapped))
@@ -194,7 +191,7 @@ extension HomeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         startLoadingScreen()
-        homeModel.search(name: searchTextField.text ?? "", searchIn: pokemonList)
+        homeModel.search(name: searchTextField.text ?? "")
         tableView.reloadData()
         stopLoadingScreen()
         return true
@@ -205,7 +202,7 @@ extension HomeViewController: UITextFieldDelegate {
 extension HomeViewController: RequestDealings {
     func decoderSuccess<T>(data: T) {
         if let pokemon = data as? PokemonList {
-            self.pokemonList = pokemon.result
+            homeModel.pokemonList = pokemon.result
             self.tableView.reloadData()
             self.stopLoadingScreen()
         }
