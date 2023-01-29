@@ -185,11 +185,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="7Pn-2g-GIm">
-                                <rect key="frame" x="135" y="259" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="7Pn-2g-GIm" secondAttribute="height" multiplier="1:1" id="GzQ-FK-5Jw"/>
-                                    <constraint firstAttribute="width" constant="50" id="dR8-yH-6CE"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -200,10 +197,12 @@
                             <constraint firstItem="mQA-M7-Ful" firstAttribute="top" secondItem="R3t-LJ-GF5" secondAttribute="bottom" id="8zT-x3-ExB"/>
                             <constraint firstItem="w5P-dH-mmR" firstAttribute="top" secondItem="R3t-LJ-GF5" secondAttribute="bottom" constant="10" id="98i-Q8-B4c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mQA-M7-Ful" secondAttribute="trailing" id="9F7-E5-C37"/>
-                            <constraint firstItem="7Pn-2g-GIm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9cZ-3z-j8F"/>
-                            <constraint firstItem="7Pn-2g-GIm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CJ8-j2-EWT"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="7Pn-2g-GIm" secondAttribute="bottom" id="B0Z-Nv-3tq"/>
+                            <constraint firstItem="7Pn-2g-GIm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="B4R-Y8-oBx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Pn-2g-GIm" secondAttribute="trailing" constant="-16" id="KfJ-gj-VrY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w5P-dH-mmR" secondAttribute="trailing" constant="10" id="UDx-cM-kjs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R3t-LJ-GF5" secondAttribute="trailing" id="XLD-52-akd"/>
+                            <constraint firstItem="7Pn-2g-GIm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="klb-Na-pnA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mQA-M7-Ful" secondAttribute="bottom" id="pHT-fj-09J"/>
                             <constraint firstItem="mQA-M7-Ful" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="phA-3t-CRM"/>
                             <constraint firstItem="R3t-LJ-GF5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rpX-5m-HxV"/>
@@ -225,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797" y="-72"/>
+            <point key="canvasLocation" x="796.875" y="-72.887323943661968"/>
         </scene>
         <!--Pokémon Status-->
         <scene sceneID="RQe-Yg-4wi">

@@ -89,16 +89,14 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func startLoadingScreen () {
-        loadingActivityIndicator.alpha = 1
-        tableView.alpha = 0.5
-        tableView.isUserInteractionEnabled = false
+    func startLoadingScreen() {
+        loadingActivityIndicator.isHidden = false
+        loadingActivityIndicator.startAnimating()
     }
     
-    func stopLoadingScreen () {
-        loadingActivityIndicator.alpha = 0
-        tableView.alpha = 1
-        tableView.isUserInteractionEnabled = true
+    func stopLoadingScreen() {
+        loadingActivityIndicator.stopAnimating()
+        loadingActivityIndicator.isHidden = true
     }
 }
 
@@ -141,7 +139,6 @@ extension HomeViewController: UITableViewDataSource {
         tapImageRight.id = Int(cell.idRight.text!)! - 1
         cell.pokemonImageRight.addGestureRecognizer(tapImageRight)
         cell.pokemonImageRight.isUserInteractionEnabled = true
-
         
         return cell
     }
