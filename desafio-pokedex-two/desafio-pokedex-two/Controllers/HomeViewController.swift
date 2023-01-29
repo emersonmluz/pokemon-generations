@@ -56,53 +56,18 @@ class HomeViewController: UIViewController {
     }
     
     private func setPopUpButton () {
-        
-        let optionClosure = {(action: UIAction) in
-            
-            switch action.title {
-            case Generations.generationI.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 0
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 151
-            case Generations.generationII.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 151
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 100
-            case Generations.generationIII.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 251
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 135
-            case Generations.generationIV.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 386
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 107
-            case Generations.generationV.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 493
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 156
-            case Generations.generationVI.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 649
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 72
-            case Generations.generationVII.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 721
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 88
-            case Generations.generationVIII.rawValue:
-                self.homeModel.numberOfOldPokemonsInGenerationPrevious = 809
-                self.homeModel.numberOfNewPokemonsInGenerationCurrent = 96
-            default:
-                self.nothingResultLabel.text = "ERROR: Erro interno no app!"
-            }
-          
-            self.homeModel.arrayOfSearch = []
-            self.startLoadingScreen()
-            self.homeModel.apiRequest()
-            
-        }
-        
+        self.startLoadingScreen()
+        homeModel.addGenerations()
+        guard let changeGeneration = homeModel.optionClosure else {return}
         generationsPopUpButton.menu = UIMenu(children: [
-            UIAction(title: Generations.generationI.rawValue, state: .on, handler: optionClosure),
-            UIAction(title: Generations.generationII.rawValue, handler: optionClosure),
-            UIAction(title: Generations.generationIII.rawValue, handler: optionClosure),
-            UIAction(title: Generations.generationIV.rawValue, state: .on, handler: optionClosure),
-            UIAction(title: Generations.generationV.rawValue, state: .on, handler: optionClosure),
-            UIAction(title: Generations.generationVI.rawValue, state: .on, handler: optionClosure),
-            UIAction(title: Generations.generationVII.rawValue, state: .on, handler: optionClosure),
-            UIAction(title: Generations.generationVIII.rawValue, state: .on, handler: optionClosure)
+            UIAction(title: Generations.generationI.rawValue, state: .on, handler: changeGeneration),
+            UIAction(title: Generations.generationII.rawValue, handler: changeGeneration),
+            UIAction(title: Generations.generationIII.rawValue, handler: changeGeneration),
+            UIAction(title: Generations.generationIV.rawValue, state: .on, handler: changeGeneration),
+            UIAction(title: Generations.generationV.rawValue, state: .on, handler: changeGeneration),
+            UIAction(title: Generations.generationVI.rawValue, state: .on, handler: changeGeneration),
+            UIAction(title: Generations.generationVII.rawValue, state: .on, handler: changeGeneration),
+            UIAction(title: Generations.generationVIII.rawValue, state: .on, handler: changeGeneration)
         ])
     }
     
