@@ -25,35 +25,41 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configUI()
+    }
+    
+    private func configUI() {
+        startLoadingScreen()
+        configComponents()
+        //configSound()
+        delegateAndSourcce()
+        hideKeyboard()
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
+    }
+    
+    private func configComponents() {
+        generationsPopUpButton.layer.cornerRadius = 6
+        setPopUpButton()
+    }
+    
+    private func delegateAndSourcce() {
         apiBrain.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        
+    }
+    
+    private func configSound() {
         sound = AudioFile.importAudioFile()
         sound?.numberOfLoops = -1
         sound?.play()
-        
-        startLoadingScreen()
-
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
-        
-        generationsPopUpButton.layer.cornerRadius = 6
-        setPopUpButton()
-        
-        touchScreen()
     }
     
-    @objc func dismissKeyboard () {
-        searchTextField.resignFirstResponder()
-    }
-    
-    func touchScreen () {
-        let touch = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+    private func hideKeyboard() {
+        let touch = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(touch)
     }
     
-    func setPopUpButton () {
+    private func setPopUpButton () {
         
         let optionClosure = {(action: UIAction) in
             
@@ -85,8 +91,7 @@ class HomeViewController: UIViewController {
             default:
                 self.nothingResultLabel.text = "ERROR: Erro interno no app!"
             }
-            
-            self.dismissKeyboard()
+          
             self.arrayOfSearch = []
             self.startLoadingScreen()
             self.apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(self.numberOfOldPokemonsInGenerationPrevious)&limit=\(self.numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
@@ -106,14 +111,13 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func searchButtonClick(_ sender: UIButton) {
-        dismissKeyboard()
         startLoadingScreen()
         search()
         tableView.reloadData()
         stopLoadingScreen()
     }
     
-    func search () {
+    private func search () {
         let searchName: String = searchTextField.text ?? ""
         arrayOfSearch = []
         
@@ -125,7 +129,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func imageTapped(sender: MyTapGesture) {
-        dismissKeyboard()
         if sender.state == .ended {
             let detailsScreen = storyboard?.instantiateViewController(withIdentifier: "ScreenDetails") as! ScreenDetailsViewController
            
@@ -135,13 +138,13 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func startLoadingScreen () {
+    private func startLoadingScreen () {
         loadingActivityIndicator.alpha = 1
         tableView.alpha = 0.5
         tableView.isUserInteractionEnabled = false
     }
     
-    func stopLoadingScreen () {
+    private func stopLoadingScreen () {
         loadingActivityIndicator.alpha = 0
         tableView.alpha = 1
         tableView.isUserInteractionEnabled = true
@@ -201,7 +204,6 @@ class MyTapGesture: UITapGestureRecognizer {
 extension HomeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
         startLoadingScreen()
         search()
         tableView.reloadData()
