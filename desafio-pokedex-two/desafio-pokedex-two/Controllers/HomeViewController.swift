@@ -16,7 +16,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var generationsPopUpButton: UIButton!
     
-    var apiBrain = ApiBrain()
     var pokemonList: [Pokemon] = []
     var homeModel = HomeViewModel()
     var numberOfNewPokemonsInGenerationCurrent: Int = 151
@@ -34,7 +33,7 @@ class HomeViewController: UIViewController {
         //configSound()
         delegateAndSourcce()
         hideKeyboard()
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
+        homeModel.apiRequest(previouGeneration: numberOfOldPokemonsInGenerationPrevious, currentGeneration: numberOfNewPokemonsInGenerationCurrent)
     }
     
     private func configComponents() {
@@ -43,7 +42,7 @@ class HomeViewController: UIViewController {
     }
     
     private func delegateAndSourcce() {
-        apiBrain.delegate = self
+        homeModel.apiBrain.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
     }
@@ -94,7 +93,7 @@ class HomeViewController: UIViewController {
           
             self.homeModel.arrayOfSearch = []
             self.startLoadingScreen()
-            self.apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(self.numberOfOldPokemonsInGenerationPrevious)&limit=\(self.numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
+            self.homeModel.apiRequest(previouGeneration: self.numberOfOldPokemonsInGenerationPrevious, currentGeneration: self.numberOfNewPokemonsInGenerationCurrent)
             
         }
         
@@ -117,8 +116,6 @@ class HomeViewController: UIViewController {
         stopLoadingScreen()
     }
     
-    
-    
     @objc func imageTapped(sender: MyTapGesture) {
         view.endEditing(true)
         if sender.state == .ended {
@@ -130,13 +127,13 @@ class HomeViewController: UIViewController {
         }
     }
 
-    private func startLoadingScreen () {
+    func startLoadingScreen () {
         loadingActivityIndicator.alpha = 1
         tableView.alpha = 0.5
         tableView.isUserInteractionEnabled = false
     }
     
-    private func stopLoadingScreen () {
+    func stopLoadingScreen () {
         loadingActivityIndicator.alpha = 0
         tableView.alpha = 1
         tableView.isUserInteractionEnabled = true
