@@ -23,7 +23,11 @@ class HomeViewModel: UIViewController {
     }
     
     internal func apiRequest() {
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self)
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon?offset=\(numberOfOldPokemonsInGenerationPrevious)&limit=\(numberOfNewPokemonsInGenerationCurrent)", type: PokemonList.self) { (response) in
+            self.pokemonList = response.result
+            self.controller?.tableView.reloadData()
+        }
+        self.controller?.stopLoadingScreen()
     }
     
     internal func search(name: String) {
@@ -123,16 +127,6 @@ class HomeViewModel: UIViewController {
         cell.pokemonImageRight.isUserInteractionEnabled = true
         
         return cell
-    }
-}
-
-extension HomeViewModel: RequestDealings {
-    func decoderSuccess<T>(data: T) {
-        if let pokemon = data as? PokemonList {
-            pokemonList = pokemon.result
-            controller?.tableView.reloadData()
-            controller?.stopLoadingScreen()
-        }
     }
 }
 

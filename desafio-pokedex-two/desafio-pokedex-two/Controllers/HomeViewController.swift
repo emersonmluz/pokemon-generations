@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     
     private func delegateAndSourcce() {
         homeModel.controller = self
-        homeModel.apiBrain.delegate = homeModel
+        homeModel.apiRequest()
         tableView.dataSource = self
         searchTextField.delegate = self
     }

@@ -20,48 +20,44 @@ class ScreenDetailsViewModel: UIViewController {
     }
 
     internal func apiRequest(pokemon: Pokemon) {
-        apiBrain.request(url: pokemon.habilityURL, type: AbilitiesList.self)
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon-form/\(pokemon.id)/", type: TypeList.self)
-        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon/\(pokemon.id)/", type: StatsList.self)
-    }
-    
-}
-
-extension ScreenDetailsViewModel: RequestDealings {
-    func decoderSuccess<T>(data: T) {
-        if let abilityList = data as? AbilitiesList {
-            abilities = abilityList.abilities
-            controller?.pokemonTechLabel[0].text = abilities![0].ability["name"]
-            if abilities!.count > 1 {
-                controller?.pokemonTechLabel[1].text = abilities![1].ability["name"]
-                controller?.pokemonTechLabel[1].isHidden = false
-                controller?.techLabel.isHidden = false
+        apiBrain.request(url: pokemon.habilityURL, type: AbilitiesList.self) { (response) in
+            self.controller?.startLoadingScreen()
+            self.abilities = response.abilities
+            self.controller?.pokemonTechLabel[0].text = self.abilities![0].ability["name"]
+            if self.abilities!.count > 1 {
+                self.controller?.pokemonTechLabel[1].text = self.abilities![1].ability["name"]
+                self.controller?.pokemonTechLabel[1].isHidden = false
+                self.controller?.techLabel.isHidden = false
             } else {
-                controller?.pokemonTechLabel[1].isHidden = true
-                controller?.techLabel.isHidden = true
+                self.controller?.pokemonTechLabel[1].isHidden = true
+                self.controller?.techLabel.isHidden = true
             }
+            self.controller?.stopLoadingScreen()
         }
         
-        if let type = data as? TypeList {
-            self.type = type.types
-            controller?.pokemonTypeLabel.text = self.type![0].type["name"]!
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon-form/\(pokemon.id)/", type: TypeList.self) { (response) in
+            self.controller?.startLoadingScreen()
+            self.type = response.types
+            self.controller?.pokemonTypeLabel.text = self.type![0].type["name"]!
             if self.type?.count ?? 0
                 > 1 {
-                controller?.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
+                self.controller?.pokemonTypeLabel.text? += " / " + (self.type?[1].type["name"]!)!
             }
-            controller?.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
-            controller?.progressBar.progressTintColor = UIColor(named: (self.type?[0].type["name"]!)!)
+            self.controller?.containerView.backgroundColor = UIColor(named: (self.type?[0].type["name"]!)!)
+            self.controller?.progressBar.progressTintColor = UIColor(named: (self.type?[0].type["name"]!)!)
+            self.controller?.stopLoadingScreen()
         }
         
-        if let stats = data as? StatsList {
-            self.stats = stats.stats
-            controller?.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
-            controller?.statsValuesLabel[0].text = String(self.stats?[1].baseStat ?? 0)
-            controller?.statsValuesLabel[1].text = String(self.stats?[2].baseStat ?? 0)
-            controller?.statsValuesLabel[2].text = String(self.stats?[3].baseStat ?? 0)
-            controller?.statsValuesLabel[3].text = String(self.stats?[4].baseStat ?? 0)
-            controller?.statsValuesLabel[4].text = String(self.stats?[5].baseStat ?? 0)
+        apiBrain.request(url: "https://pokeapi.co/api/v2/pokemon/\(pokemon.id)/", type: StatsList.self) { (response) in
+            self.controller?.startLoadingScreen()
+            self.stats = response.stats
+            self.controller?.hpLabel.text = "HP " + String(self.stats?[0].baseStat ?? 0) + " / " + String(self.stats?[0].baseStat ?? 0)
+            self.controller?.statsValuesLabel[0].text = String(self.stats?[1].baseStat ?? 0)
+            self.controller?.statsValuesLabel[1].text = String(self.stats?[2].baseStat ?? 0)
+            self.controller?.statsValuesLabel[2].text = String(self.stats?[3].baseStat ?? 0)
+            self.controller?.statsValuesLabel[3].text = String(self.stats?[4].baseStat ?? 0)
+            self.controller?.statsValuesLabel[4].text = String(self.stats?[5].baseStat ?? 0)
+            self.controller?.stopLoadingScreen()
         }
-        controller?.stopLoadingScreen()
     }
 }

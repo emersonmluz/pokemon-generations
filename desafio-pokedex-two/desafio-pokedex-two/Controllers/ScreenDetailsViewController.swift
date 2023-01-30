@@ -32,9 +32,8 @@ class ScreenDetailsViewController: UIViewController {
     }
     
     private func configUI() {
-        startLoadingScreen()
         screenDetailsModel.controller = self
-        screenDetailsModel.apiBrain.delegate = screenDetailsModel
+        screenDetailsModel.apiRequest(pokemon: pokemon!)
         configComponents()
         loadPokemonInfo()
         if let pokemon = pokemon {
