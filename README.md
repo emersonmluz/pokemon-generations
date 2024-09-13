@@ -1,4 +1,4 @@
-# pokemon-generations-with-MVVM
+# pokemon-generations
 Desafio do Programa Rocket, bootcamp da Vortigo, onde foi solicitado criar um app que listasse um número de pokemons apartir de uma API Web e mostrasse detalhes do pokémon clicado em uma segunda tela. Além do solicitado, fiz um campo de pesquisa de pokémons e um botão para selecionar por geração.
 
 <img width="299" alt="Captura de Tela 2023-03-25 às 14 02 37" src="https://user-images.githubusercontent.com/111133275/227732633-1d0c7d33-89d9-453c-a108-cff541ce732c.png">
